@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Minecart : MonoBehaviour
 {
@@ -12,11 +13,13 @@ public class Minecart : MonoBehaviour
     public float brakeForce = 2f;
     public float jumpForce = 20f;
     int health = 100;
+    public TMP_Text healthUI;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        healthUI.text = "Health: " + health;
     }
 
     // Update is called once per frame
@@ -60,29 +63,25 @@ public class Minecart : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if(collision.gameObject.CompareTag("Hazard"))
-        {
-            health = health - 100;
-            if (health == 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //Handles collisions of the hazards.
-            }
-        }
-
-    }
-
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Zombie"))        // Handles collisions of the enemies (Zombies, bats, etc.)
         {
-            health = health - 100;
+            health = health - 10;
+            healthUI.text = "Health: " + health;
             if (health == 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+
+        if(collision.gameObject.CompareTag("Hazard"))
+        {
+            health = health - 10;
+            healthUI.text = "Health: " + health;
+            if (health == 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //Handles collisions of the hazards.
             }
         }
 
