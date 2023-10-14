@@ -16,17 +16,20 @@ public class Minecart : MonoBehaviour
     private float currentSpeed;
     int health = 100;
     public TMP_Text healthUI;
-    
+
+    //Caleb change -- added this bool for checking breaking.
+    public bool isBreaking = false;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-         
+
 
         rb = GetComponent<Rigidbody2D>();
         healthUI.text = "Health: " + health;
-        
+
     }
 
     // Update is called once per frame
@@ -37,22 +40,32 @@ public class Minecart : MonoBehaviour
 
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
 
-
-        
-        
-            FixedUpdate();
-            Debug.Log("Speed" + rb.velocity.normalized);
-        
-        // Apply braking force when 'A' is pressed
-         if (moveHorizontal < 0)
+        //Caleb change -- Added this to stop adding velocity when A is held.
+        if (Input.GetKey(KeyCode.A))
         {
-            
-                Vector2 brakeDirection = -rb.velocity.normalized;
-                Vector2 brakeForceVector = brakeDirection * brakeForce;
-                rb.AddForce(brakeForceVector, ForceMode2D.Force);
-                Debug.Log("Breaking");
-            
+            isBreaking = true;
         }
+        else
+        {
+            isBreaking = false;
+        }
+
+
+            FixedUpdate();
+        Debug.Log("Speed" + rb.velocity.normalized);
+
+
+        //Caleb change -- Commented this out and instead just stopped adding velocity when A is being held.
+
+        //// Apply braking force when 'A' is pressed
+        //if (moveHorizontal < 0)
+        //{
+
+        //    Vector2 brakeDirection = -rb.velocity.normalized;
+        //    Vector2 brakeForceVector = brakeDirection * brakeForce;
+        //    rb.AddForce(brakeForceVector, ForceMode2D.Force);
+        //    Debug.Log("Breaking");
+        //}
 
 
         if (Input.GetButtonDown("Jump"))
@@ -64,18 +77,20 @@ public class Minecart : MonoBehaviour
 
     private void FixedUpdate()
     {
-     
-        // cart movement
-     float moveHorizontal = Input.GetAxisRaw("Horizontal");
-
-      rb.AddForce(Vector2.right * fowardSpeed, 0);
-
-      if (rb.velocity.magnitude > maxSpeed)
+        //Caleb change -- here's the boolean that is checked to see if A is being held.
+        if (!isBreaking)
         {
-            rb.velocity = rb.velocity.normalized * maxSpeed;
-            
+            // cart movement
+            float moveHorizontal = Input.GetAxisRaw("Horizontal");
+
+            rb.AddForce(Vector2.right * fowardSpeed, 0);
+
+            if (rb.velocity.magnitude > maxSpeed)
+            {
+                rb.velocity = rb.velocity.normalized * maxSpeed;
+
+            }
         }
-      
     }
 
     private void Jump()
@@ -86,7 +101,7 @@ public class Minecart : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+
 
         if (collision.gameObject.CompareTag("Zombie"))        // Handles collisions of the enemies (Zombies, bats, etc.)
         {
@@ -98,7 +113,7 @@ public class Minecart : MonoBehaviour
             }
         }
 
-        if(collision.gameObject.CompareTag("Hazard"))
+        if (collision.gameObject.CompareTag("Hazard"))
         {
             health = health - 10;
             healthUI.text = "Health: " + health;
@@ -107,7 +122,7 @@ public class Minecart : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //Handles collisions of the hazards.
             }
 
-           
+
         }
 
     }
