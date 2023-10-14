@@ -21,6 +21,10 @@ public class OreManager : MonoBehaviour
         {
             oreHealth = Random.Range(3, 8);
         }
+        else if (gameObject.tag == "rock")
+        {
+            oreHealth = Random.Range(7, 10);
+        }
         else
         {
             Debug.Log("Something went wrong.");

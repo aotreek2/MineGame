@@ -44,14 +44,11 @@ public class PickaxeManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Something went wrong.");
+                    Debug.Log("Something went wrong. Or you mined rock.");
                 }
 
                 oreManager.oreHealth--;
-                if (oreManager.oreHealth <= 0)
-                {
-                    currentOre.SetActive(false);
-                }
+                
 
                 UpdateOres();
             }
@@ -61,7 +58,7 @@ public class PickaxeManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "goldOre" || collision.tag == "diamondOre" || collision.tag == "invineOre")
+        if (collision.tag == "goldOre" || collision.tag == "diamondOre" || collision.tag == "invineOre" || collision.tag == "rock")
         {
             currentOre = collision.gameObject;
             oreManager = collision.GetComponent<OreManager>();
@@ -71,7 +68,7 @@ public class PickaxeManager : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "goldOre" || collision.tag == "diamondOre" || collision.tag == "invineOre")
+        if (collision.tag == "goldOre" || collision.tag == "diamondOre" || collision.tag == "invineOre" || collision.tag == "rock")
         {
             inRange = false;
         }
@@ -86,8 +83,13 @@ public class PickaxeManager : MonoBehaviour
     {
         if (inRange)
         {
-            currentOre.transform.GetChild(0).transform.GetComponent<ParticleSystem>().Play();
-            //transform.GetChild(0).transform.GetComponent<ParticleSystem>().Play();
+            currentOre.transform.parent.GetChild(1).transform.GetComponent<ParticleSystem>().Play();
+            //currentOre.transform.GetChild(0).transform.GetComponent<ParticleSystem>().Play();
+
+            if (oreManager.oreHealth <= 0)
+            {
+                currentOre.SetActive(false);
+            }
         }
     }
 }

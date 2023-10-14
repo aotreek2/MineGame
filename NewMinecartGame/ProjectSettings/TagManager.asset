@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Zombie
   - Hazard
+  - goldOre
+  - rock
   layers:
   - Default
   - TransparentFX
