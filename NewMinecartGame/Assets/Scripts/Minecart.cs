@@ -9,36 +9,49 @@ public class Minecart : MonoBehaviour
     Rigidbody2D rb;
 
     public float fowardSpeed = 5f;
+    public float maxSpeed = 20f;
     private float moveHorizontal;
-    public float brakeForce = 2f;
+    public float brakeForce = 100f;
     public float jumpForce = 20f;
+    private float currentSpeed;
     int health = 100;
     public TMP_Text healthUI;
+    
 
-    private Vector2 maxSpeed = new Vector2(10, 10);
 
     // Start is called before the first frame update
     void Start()
     {
+         
+
         rb = GetComponent<Rigidbody2D>();
         healthUI.text = "Health: " + health;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        float speed = rb.velocity.magnitude;
+
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
 
 
-        // Apply forward force when 'D' is pressed
-        if (moveHorizontal > 0)
-        {
+        
+        
             FixedUpdate();
-        }
+            Debug.Log("Speed" + rb.velocity.normalized);
+        
         // Apply braking force when 'A' is pressed
-        else if (moveHorizontal < 0)
+         if (moveHorizontal < 0)
         {
-            rb.velocity *= 0.8f;
+            
+                Vector2 brakeDirection = -rb.velocity.normalized;
+                Vector2 brakeForceVector = brakeDirection * brakeForce;
+                rb.AddForce(brakeForceVector, ForceMode2D.Force);
+                Debug.Log("Breaking");
+            
         }
 
 
@@ -51,11 +64,18 @@ public class Minecart : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-            // cart movement
-            float moveHorizontal = Input.GetAxisRaw("Horizontal");
+     
+        // cart movement
+     float moveHorizontal = Input.GetAxisRaw("Horizontal");
 
-            rb.AddForce(Vector2.right * moveHorizontal * fowardSpeed, 0);
+      rb.AddForce(Vector2.right * fowardSpeed, 0);
+
+      if (rb.velocity.magnitude > maxSpeed)
+        {
+            rb.velocity = rb.velocity.normalized * maxSpeed;
+            
+        }
+      
     }
 
     private void Jump()
@@ -66,6 +86,8 @@ public class Minecart : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
+
         if (collision.gameObject.CompareTag("Zombie"))        // Handles collisions of the enemies (Zombies, bats, etc.)
         {
             health = health - 10;
@@ -73,6 +95,10 @@ public class Minecart : MonoBehaviour
             if (health == 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            if (rb.velocity.magnitude > 18)
+            {
+                Destroy(collision.gameObject);
             }
         }
 
@@ -84,6 +110,8 @@ public class Minecart : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //Handles collisions of the hazards.
             }
+
+           
         }
 
     }

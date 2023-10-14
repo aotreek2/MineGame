@@ -2264,16 +2264,20 @@ PrefabInstance:
       value: Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 2824757394844148306, guid: 13a520f1ed82cf54bb11c9614c5be660, type: 3}
+      propertyPath: speed
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824757394844148306, guid: 13a520f1ed82cf54bb11c9614c5be660, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1133257498853836212}
     - target: {fileID: 3015226616655927183, guid: 13a520f1ed82cf54bb11c9614c5be660, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.01
+      value: 8.76
       objectReference: {fileID: 0}
     - target: {fileID: 3015226616655927183, guid: 13a520f1ed82cf54bb11c9614c5be660, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.34
+      value: -1.8
       objectReference: {fileID: 0}
     - target: {fileID: 3015226616655927183, guid: 13a520f1ed82cf54bb11c9614c5be660, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2306,6 +2310,14 @@ PrefabInstance:
     - target: {fileID: 3015226616655927183, guid: 13a520f1ed82cf54bb11c9614c5be660, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3452679190980204626, guid: 13a520f1ed82cf54bb11c9614c5be660, type: 3}
+      propertyPath: m_Mass
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3452679190980204626, guid: 13a520f1ed82cf54bb11c9614c5be660, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7959850861158833687, guid: 13a520f1ed82cf54bb11c9614c5be660, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2547,6 +2559,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3451069671827808741, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451069671827808741, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4547677257210340475, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -2620,12 +2640,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 418a6a50fd61dce459a2d286a18c2ddc, type: 2}
     - target: {fileID: 8210585212541404564, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: speedUI
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210585212541404564, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: healthUI
       value: 
       objectReference: {fileID: 1043055425}
     - target: {fileID: 8210585212541404564, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: jumpForce
       value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210585212541404564, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: brakeForce
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8210585212541404564, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: fowardSpeed

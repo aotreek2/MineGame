@@ -9,12 +9,14 @@ public class Zombie : MonoBehaviour
     public float speed;
     public float distanceBetween;
     public Animator zombie;
+    private Rigidbody2D rb;
    
 
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -27,7 +29,8 @@ public class Zombie : MonoBehaviour
 
         if (distance < distanceBetween)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime); //sets up when the zombie chases the player 
+            Vector2 target = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime); //sets up when the zombie chases the player
+            rb.velocity = target.normalized;                                                                                                                  
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
             zombie.SetTrigger("Vision");
         }
