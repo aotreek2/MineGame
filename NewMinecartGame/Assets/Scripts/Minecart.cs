@@ -96,10 +96,6 @@ public class Minecart : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
-            if (rb.velocity.magnitude > 18)
-            {
-                Destroy(collision.gameObject);
-            }
         }
 
         if(collision.gameObject.CompareTag("Hazard"))

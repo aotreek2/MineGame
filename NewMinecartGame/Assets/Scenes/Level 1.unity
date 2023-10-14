@@ -2277,7 +2277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3015226616655927183, guid: 13a520f1ed82cf54bb11c9614c5be660, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8
+      value: -1.817
       objectReference: {fileID: 0}
     - target: {fileID: 3015226616655927183, guid: 13a520f1ed82cf54bb11c9614c5be660, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2647,6 +2647,10 @@ PrefabInstance:
       propertyPath: healthUI
       value: 
       objectReference: {fileID: 1043055425}
+    - target: {fileID: 8210585212541404564, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8210585212541404564, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: jumpForce
       value: 600
