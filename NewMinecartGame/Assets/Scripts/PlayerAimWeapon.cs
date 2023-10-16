@@ -2,9 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CodeMonkey.Utils;
+using UnityEngine.Diagnostics;
 
 public class PlayerAimWeapon : MonoBehaviour
 {
+
+    [SerializeField] private Material weaponTracerMaterial;
     public GameObject gunAnimation;
 
     public event EventHandler<onShootEventArgs> onShoot;
@@ -83,5 +87,23 @@ public class PlayerAimWeapon : MonoBehaviour
     {
         Vector3 worldPosition = worldCamera.ScreenToWorldPoint(screenPosition);
         return worldPosition;
+    }
+
+    private void WeaponTracer(Vector3 fromPosition, Vector3 targetPosition)
+    {
+        Vector3 direct = (targetPosition - fromPosition).normalized;
+        float eulerZ = GetAngleFromVectorFloat(direct);
+        float distance = Vector3.Distance(fromPosition, targetPosition);
+        Vector3 tracerSpawnPosition = fromPosition + direct * distance * .5f;
+        World_Mesh worldMesh = World_Mesh.Create(tracerSpawnPosition, eulerZ, 6f, distance, weaponTracerMaterial, null, 10000);
+    }
+
+    public static float GetAngleFromVectorFloat(Vector3 dir)
+    {
+        dir = dir.normalized;
+        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (n < 0) n += 360;
+
+        return n;
     }
 }
