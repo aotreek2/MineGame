@@ -29,10 +29,12 @@ public class Zombie : MonoBehaviour
 
         if (distance < distanceBetween)
         {
+            zombie.Play("zombie move");
+
             Vector2 target = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime); //sets up when the zombie chases the player
             rb.velocity = direction * speed;
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-            zombie.SetTrigger("Vision");
+            //zombie.SetTrigger("Vision");
         }
     }
 }

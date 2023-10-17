@@ -17,8 +17,11 @@ public class Minecart : MonoBehaviour
     int health = 100;
     public TMP_Text healthUI;
 
+  
+
     //Caleb change -- added this bool for checking breaking.
     public bool isBreaking = false;
+    public bool isJumping = false;
 
 
 
@@ -38,9 +41,10 @@ public class Minecart : MonoBehaviour
 
         float speed = rb.velocity.magnitude;
 
-        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        // This apparently wasn't being used?
+        //float moveHorizontal = Input.GetAxisRaw("Horizontal");
 
-        //Caleb change -- Added this to stop adding velocity when A is held.
+
         if (Input.GetKey(KeyCode.A))
         {
             isBreaking = true;
@@ -51,21 +55,9 @@ public class Minecart : MonoBehaviour
         }
 
 
-            FixedUpdate();
-        Debug.Log("Speed" + rb.velocity.normalized);
+        FixedUpdate();
+        Debug.Log("Speed" + rb.velocity.normalized + "");
 
-
-        //Caleb change -- Commented this out and instead just stopped adding velocity when A is being held.
-
-        //// Apply braking force when 'A' is pressed
-        //if (moveHorizontal < 0)
-        //{
-
-        //    Vector2 brakeDirection = -rb.velocity.normalized;
-        //    Vector2 brakeForceVector = brakeDirection * brakeForce;
-        //    rb.AddForce(brakeForceVector, ForceMode2D.Force);
-        //    Debug.Log("Breaking");
-        //}
 
 
         if (Input.GetButtonDown("Jump"))
@@ -77,25 +69,46 @@ public class Minecart : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Caleb change -- here's the boolean that is checked to see if A is being held.
         if (!isBreaking)
         {
             // cart movement
-            float moveHorizontal = Input.GetAxisRaw("Horizontal");
 
-            rb.AddForce(Vector2.right * fowardSpeed, 0);
+            // This apparently wasn't being used?
+            //float moveHorizontal = Input.GetAxisRaw("Horizontal");
 
+
+
+            //rb.AddForce(Vector2.right * fowardSpeed, 0);
+
+            //Caleb change - by directly setting the value of velocity, some of the addforce from Jump() is overridden.
+
+            //if (rb.velocity.magnitude > maxSpeed)
+            //{
+            //    rb.velocity = rb.velocity.normalized * maxSpeed;
+            //}
+
+
+            // Using this seems to do the same thing without taking away jump momentum while the player moves
             if (rb.velocity.magnitude > maxSpeed)
             {
-                rb.velocity = rb.velocity.normalized * maxSpeed;
 
             }
+            else
+            {
+                rb.AddForce(Vector2.right * fowardSpeed, 0);
+            }
         }
+
+        
     }
 
     private void Jump()
     {
-        rb.AddForce(new Vector2(rb.velocity.x, jumpForce)); // makes the minecart jump
+        if (!isJumping)
+        {
+            rb.AddForce(new Vector2(rb.velocity.x, jumpForce)); // makes the minecart jump
+            isJumping = true;
+        }
     }
 
 
@@ -123,6 +136,14 @@ public class Minecart : MonoBehaviour
             }
 
 
+        }
+
+        if (isJumping)
+        {
+            if(collision.gameObject.CompareTag("track"))
+            {
+                isJumping = false;
+            }
         }
 
     }
