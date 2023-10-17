@@ -12,7 +12,7 @@ public class Minecart : MonoBehaviour
     public float maxSpeed = 20f;
     private float moveHorizontal;
     public float brakeForce = 100f;
-    public float jumpForce = 20f;
+    public float jumpForce = 200f;
     private float currentSpeed;
     int health = 100;
     public TMP_Text healthUI;

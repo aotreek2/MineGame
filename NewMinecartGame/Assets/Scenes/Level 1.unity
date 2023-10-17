@@ -674,18 +674,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.031113118, y: 0.117382295}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.44, y: 1.85}
-    newSize: {x: 1, y: 2}
+    oldSize: {x: 0.42, y: 0.48}
+    newSize: {x: 0.42, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.44, y: 1.85}
+  m_Size: {x: 0.19651294, y: 0.23600264}
   m_EdgeRadius: 0
 --- !u!1 &519420028
 GameObject:
@@ -774,7 +774,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.026176952, w: 0.99965733}
-  m_LocalPosition: {x: -19.503, y: -0.48300004, z: -10}
+  m_LocalPosition: {x: -19.6199, y: -0.96000004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1025,7 +1025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1010767101
 Transform:
   m_ObjectHideFlags: 0
@@ -1580,7 +1580,7 @@ Transform:
   m_GameObject: {fileID: 1388162323}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.503, y: -0.48300004, z: -10}
+  m_LocalPosition: {x: -19.6199, y: -0.96000004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2618,7 +2618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1479826981914184792, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3451069671827808741, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: m_Mass
@@ -2697,6 +2697,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7195012141453988502, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: m_Size.x
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 7195012141453988502, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: m_Size.y
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7195012141453988502, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3bf8ea16f86e9484c94f084fc392ff83, type: 3}
+    - target: {fileID: 7195012141453988502, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7195012141453988502, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 418a6a50fd61dce459a2d286a18c2ddc, type: 2}
@@ -2725,8 +2741,24 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8295294356198722741, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295294356198722741, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295294356198722741, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295294356198722741, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.147
+      value: 0.0301
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295294356198722741, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.114
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
