@@ -48,6 +48,12 @@ public class Minecart : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             isBreaking = true;
+            if (rb.velocity.x > 1)
+            {
+                rb.AddForce(Vector2.left * brakeForce);
+            }
+
+            
         }
         else
         {
@@ -107,6 +113,7 @@ public class Minecart : MonoBehaviour
         if (!isJumping)
         {
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce)); // makes the minecart jump
+            transform.GetComponent<Animator>().Play("MinecartJump");
             isJumping = true;
         }
     }
