@@ -72,6 +72,7 @@ public class MinerTest : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
+
         }
 
         if (collision.gameObject.CompareTag("Hazard"))

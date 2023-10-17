@@ -8,16 +8,17 @@ public class Minecart : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    public float fowardSpeed = 5f;
-    public float maxSpeed = 20f;
+    public float forwardSpeed = 5f;
+    public float maxSpeed = 5f;
     private float moveHorizontal;
     public float brakeForce = 100f;
     public float jumpForce = 200f;
-    private float currentSpeed;
-    int health = 100;
+    int cartHealth = 100;
     public TMP_Text healthUI;
+    public AudioSource movement;
+    public AudioSource crash;
 
-  
+
 
     //Caleb change -- added this bool for checking breaking.
     public bool isBreaking = false;
@@ -31,38 +32,27 @@ public class Minecart : MonoBehaviour
 
 
         rb = GetComponent<Rigidbody2D>();
-        healthUI.text = "Health: " + health;
+        healthUI.text = "Health: " + cartHealth;
+        movement.Play();
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        float speed = rb.velocity.magnitude;
-
-        // This apparently wasn't being used?
-        //float moveHorizontal = Input.GetAxisRaw("Horizontal");
-
+        FixedUpdate();
 
         if (Input.GetKey(KeyCode.A))
         {
             isBreaking = true;
-            if (rb.velocity.x > 1)
-            {
-                rb.AddForce(Vector2.left * brakeForce);
-            }
-
-            
+            movement.Stop();
         }
         else
         {
             isBreaking = false;
+            
         }
-
-
-        FixedUpdate();
-        Debug.Log("Speed" + rb.velocity.normalized + "");
 
 
 
@@ -77,35 +67,17 @@ public class Minecart : MonoBehaviour
     {
         if (!isBreaking)
         {
-            // cart movement
-
-            // This apparently wasn't being used?
-            //float moveHorizontal = Input.GetAxisRaw("Horizontal");
-
-
-
-            //rb.AddForce(Vector2.right * fowardSpeed, 0);
-
-            //Caleb change - by directly setting the value of velocity, some of the addforce from Jump() is overridden.
-
-            //if (rb.velocity.magnitude > maxSpeed)
-            //{
-            //    rb.velocity = rb.velocity.normalized * maxSpeed;
-            //}
-
-
-            // Using this seems to do the same thing without taking away jump momentum while the player moves
-            if (rb.velocity.magnitude > maxSpeed)
+            if(rb.velocity.x >= maxSpeed)
             {
 
             }
             else
             {
-                rb.AddForce(Vector2.right * fowardSpeed, 0);
-            }
+                rb.AddForce(Vector2.right * forwardSpeed, 0);
+
+            }       
         }
 
-        
     }
 
     private void Jump()
@@ -115,6 +87,11 @@ public class Minecart : MonoBehaviour
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce)); // makes the minecart jump
             transform.GetComponent<Animator>().Play("MinecartJump");
             isJumping = true;
+            movement.Stop();
+        }
+        else
+        {
+            movement.Play();
         }
     }
 
@@ -125,19 +102,29 @@ public class Minecart : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Zombie"))        // Handles collisions of the enemies (Zombies, bats, etc.)
         {
-            health = health - 10;
-            healthUI.text = "Health: " + health;
-            if (health == 0)
+            Zombie zombie = collision.gameObject.GetComponent<Zombie>();
+
+            cartHealth -= 10;
+            healthUI.text = "Health: " + cartHealth;
+            if (cartHealth == 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            else if (zombie != null && rb.velocity.magnitude >= 5)
+            {
+                cartHealth -= 10;
+                zombie.Death(); // calls the death method from the zombie script 
+                Vector2 pushBackDirection = (transform.position - collision.transform.position).normalized;
+                rb.AddForce(pushBackDirection * 10, ForceMode2D.Impulse);   // Knockback when the cart hits the zombie at max speed
             }
         }
 
         if (collision.gameObject.CompareTag("Hazard"))
         {
-            health = health - 10;
-            healthUI.text = "Health: " + health;
-            if (health == 0)
+            cartHealth -= 10;
+            healthUI.text = "Health: " + cartHealth;
+            crash.Play();
+            if (cartHealth == 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //Handles collisions of the hazards.
             }
@@ -150,6 +137,7 @@ public class Minecart : MonoBehaviour
             if(collision.gameObject.CompareTag("track"))
             {
                 isJumping = false;
+                
             }
         }
 
