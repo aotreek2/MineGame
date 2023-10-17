@@ -8,6 +8,7 @@ TagManager:
   - Hazard
   - goldOre
   - rock
+  - track
   layers:
   - Default
   - TransparentFX

@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 91917114}
   m_Layer: 0
   m_Name: MinecartTrack
-  m_TagString: Untagged
+  m_TagString: track
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 181850267}
   m_Layer: 0
   m_Name: MinecartTrack
-  m_TagString: Untagged
+  m_TagString: track
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2730,7 +2730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8210585212541404564, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: jumpForce
-      value: 600
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 8210585212541404564, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: brakeForce
