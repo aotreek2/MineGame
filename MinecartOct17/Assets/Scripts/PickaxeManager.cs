@@ -18,10 +18,13 @@ public class PickaxeManager : MonoBehaviour
 
     public AudioSource mining;
 
+    // Ore ping thing
+    public Animator orePing;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //orePing = transform.GetChild(0).GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -50,6 +53,8 @@ public class PickaxeManager : MonoBehaviour
                 {
                     Debug.Log("Something went wrong. Or you mined rock.");
                 }
+
+               // orePing.Play("OrePing");
 
                 mining.pitch = Random.Range(1f, 1.8f);
                 mining.Play();
