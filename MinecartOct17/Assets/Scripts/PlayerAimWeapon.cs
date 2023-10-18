@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerAimWeapon : MonoBehaviour
 {
     public GameObject gunAnimation;
+    public GameObject bulletPrefab;
 
     public event EventHandler<onShootEventArgs> onShoot;
     public class onShootEventArgs : EventArgs
@@ -56,7 +57,12 @@ public class PlayerAimWeapon : MonoBehaviour
                 shootPosition = mousePosition,
                  BulletPosition = aimBulletPositionTransform.position,
             });
-            Debug.Log(mousePosition);
+
+            Debug.Log(mousePosition + "SHOT");
+
+            Instantiate(bulletPrefab, aimGunEndPointTransform.position, aimGunEndPointTransform.rotation);
+
+            Debug.Log("Successfully shot!");
 
             //makes muzzle flare
             gunAnimation.gameObject.SetActive(true);
