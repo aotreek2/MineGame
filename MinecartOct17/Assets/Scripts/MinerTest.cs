@@ -9,7 +9,6 @@ public class MinerTest : MonoBehaviour
     private Animator animator;
     private bool isDucking;
     private Collider2D standingCollider;
-    private Collider2D duckingCollider;
     int health = 50;
     public TMP_Text healthMinerUI;
 

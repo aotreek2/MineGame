@@ -9,6 +9,8 @@ TagManager:
   - goldOre
   - rock
   - track
+  - invineOre
+  - CeilingHazard
   layers:
   - Default
   - TransparentFX
