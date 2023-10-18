@@ -51,6 +51,7 @@ public class PickaxeManager : MonoBehaviour
                 }
                 else
                 {
+                    mining.Play();
                     Debug.Log("Something went wrong. Or you mined rock.");
                 }
 

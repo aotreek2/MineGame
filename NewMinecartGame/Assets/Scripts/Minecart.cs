@@ -46,11 +46,12 @@ public class Minecart : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             isBreaking = true;
-            movement.Stop();
+            
         }
         else
         {
             isBreaking = false;
+            
             
         }
 
@@ -87,7 +88,7 @@ public class Minecart : MonoBehaviour
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce)); // makes the minecart jump
             transform.GetComponent<Animator>().Play("MinecartJump");
             isJumping = true;
-            movement.Stop();
+            movement.Pause();
         }
         else
         {
@@ -121,9 +122,9 @@ public class Minecart : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Hazard"))
         {
+            crash.Play();
             cartHealth -= 10;
             healthUI.text = "Health: " + cartHealth;
-            crash.Play();
             if (cartHealth == 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //Handles collisions of the hazards.
@@ -137,7 +138,7 @@ public class Minecart : MonoBehaviour
             if(collision.gameObject.CompareTag("track"))
             {
                 isJumping = false;
-                
+                movement.Play();
             }
         }
 
