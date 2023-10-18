@@ -11,6 +11,8 @@ public class Zombie : MonoBehaviour
     public Animator zombie;
     private Rigidbody2D rb;
     public AudioSource zombieGroan;
+
+    public int health = 100;
    
 
 
@@ -47,6 +49,18 @@ public class Zombie : MonoBehaviour
         {
             zombieGroan.Stop();
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Death();
+        }
+
+
+
     }
 
     public void Death()
