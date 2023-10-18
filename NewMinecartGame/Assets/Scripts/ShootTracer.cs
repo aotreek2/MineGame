@@ -5,11 +5,8 @@ using UnityEngine;
 
 public class ShootTracer : MonoBehaviour
 {
-
     [SerializeField] private PlayerAimWeapon playerAimWeapon;
     [SerializeField] private Material weaponTracerMaterial;
-
-    public GameObject gunAnimation;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +16,7 @@ public class ShootTracer : MonoBehaviour
     private void PlayerAimWeapon_OnShoot(object sender, PlayerAimWeapon.OnShootEventArgs e)
     {
         WeaponTracer(e.gunEndPointPosition, e.shootPosition);
-        gunAnimation.gameObject.SetActive(true);
-        gunAnimation.GetComponent<Animator>().Play("MuzzleFlare");
+
     }
 
     private void WeaponTracer(Vector3 fromPosition, Vector3 targetPosition)

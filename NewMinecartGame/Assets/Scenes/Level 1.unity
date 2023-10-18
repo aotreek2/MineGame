@@ -889,53 +889,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588277979}
   m_CullTransparentMesh: 1
---- !u!1 &630325521
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 630325523}
-  - component: {fileID: 630325522}
-  m_Layer: 0
-  m_Name: Shoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &630325522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630325521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed3412c18c510ce4fa6d6bd6cdc46712, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAimWeapon: {fileID: 252939620}
-  weaponTracerMaterial: {fileID: 2100000, guid: 206edcf14250c3a4dbb90435eb318e1b, type: 2}
-  gunAnimation: {fileID: 2064675450}
---- !u!4 &630325523
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630325521}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.678595, y: -0.30648908, z: -1.046546}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &770821364
 GameObject:
   m_ObjectHideFlags: 3
@@ -1154,6 +1107,7 @@ MonoBehaviour:
   gold: 0
   diamond: 0
   invine: 0
+  mining: {fileID: 0}
 --- !u!95 &1010767106
 Animator:
   serializedVersion: 5
@@ -2750,4 +2704,3 @@ SceneRoots:
   - {fileID: 1580962261}
   - {fileID: 1821028712}
   - {fileID: 2867006609579713702}
-  - {fileID: 630325523}

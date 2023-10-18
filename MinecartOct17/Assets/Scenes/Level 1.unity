@@ -737,6 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunAnimation: {fileID: 2064675450}
+  bullletPrefab: {fileID: 7601316217604011029, guid: 9f0925da9331d904a87193c1f8ad6191, type: 3}
 --- !u!4 &252939619
 Transform:
   m_ObjectHideFlags: 0
