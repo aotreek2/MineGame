@@ -39,15 +39,10 @@ public class UIScript : MonoBehaviour
         SceneManager.LoadScene("Level 1");
     }
 
-<<<<<<< HEAD
-    public void BackbuttonClick()
-=======
-    public void BackButtonClick()
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
+   public void BackButtonClick()
+
     {
         SceneManager.LoadScene("MainMenu");
 
     }
-
-  
 }
