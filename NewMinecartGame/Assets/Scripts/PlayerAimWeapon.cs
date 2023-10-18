@@ -2,13 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CodeMonkey.Utils;
 
 public class PlayerAimWeapon : MonoBehaviour
 {
+
+   
+  
     public GameObject gunAnimation;
 
-    public event EventHandler<onShootEventArgs> onShoot;
-    public class onShootEventArgs : EventArgs
+    public event EventHandler<OnShootEventArgs> OnShoot;
+    public class OnShootEventArgs : EventArgs
     {
         public Vector3 gunEndPointPosition;
         public Vector3 shootPosition;
@@ -25,7 +29,7 @@ public class PlayerAimWeapon : MonoBehaviour
     {
         aimTransform = transform.Find("Aim").transform.GetChild(0);
         aimGunEndPointTransform = aimTransform.Find("GunEndPointPosition");
-
+  
 
     }
 
@@ -33,7 +37,10 @@ public class PlayerAimWeapon : MonoBehaviour
     {
         HandleAiming();
         handleShooting();
+      
     }
+
+   
 
 
     private void HandleAiming()
@@ -50,7 +57,7 @@ public class PlayerAimWeapon : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePosition = GetMousePosition();
-            onShoot?.Invoke(this, new onShootEventArgs
+            OnShoot?.Invoke(this, new OnShootEventArgs
             {
                 gunEndPointPosition = aimGunEndPointTransform.position,
                 shootPosition = mousePosition,
@@ -61,9 +68,11 @@ public class PlayerAimWeapon : MonoBehaviour
             //makes muzzle flare
             gunAnimation.gameObject.SetActive(true);
             gunAnimation.GetComponent<Animator>().Play("MuzzleFlare");
+           
         }
     }
 
+  
 
     public static Vector3 GetMousePosition()
     {
@@ -84,4 +93,7 @@ public class PlayerAimWeapon : MonoBehaviour
         Vector3 worldPosition = worldCamera.ScreenToWorldPoint(screenPosition);
         return worldPosition;
     }
+    
+
+    
 }

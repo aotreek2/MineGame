@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Switching : MonoBehaviour
 {
@@ -36,5 +37,13 @@ public class Switching : MonoBehaviour
             PlayerState[1].SetActive(false);
             PlayerState[2].SetActive(true);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
+
+
 }
+
