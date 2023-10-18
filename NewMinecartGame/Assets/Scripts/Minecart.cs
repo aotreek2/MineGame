@@ -8,17 +8,21 @@ public class Minecart : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    public float fowardSpeed = 5f;
-    public float maxSpeed = 20f;
+    public float forwardSpeed = 5f;
+    public float maxSpeed = 5f;
     private float moveHorizontal;
     public float brakeForce = 100f;
-    public float jumpForce = 20f;
-    private float currentSpeed;
-    int health = 100;
+    public float jumpForce = 200f;
+    int cartHealth = 100;
     public TMP_Text healthUI;
+    public AudioSource movement;
+    public AudioSource crash;
+
+
 
     //Caleb change -- added this bool for checking breaking.
     public bool isBreaking = false;
+    public bool isJumping = false;
 
 
 
@@ -28,44 +32,29 @@ public class Minecart : MonoBehaviour
 
 
         rb = GetComponent<Rigidbody2D>();
-        healthUI.text = "Health: " + health;
+        healthUI.text = "Health: " + cartHealth;
+        movement.Play();
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        FixedUpdate();
 
-        float speed = rb.velocity.magnitude;
-
-        float moveHorizontal = Input.GetAxisRaw("Horizontal");
-
-        //Caleb change -- Added this to stop adding velocity when A is held.
         if (Input.GetKey(KeyCode.A))
         {
             isBreaking = true;
+            
         }
         else
         {
             isBreaking = false;
+            
+            
         }
 
-
-            FixedUpdate();
-        Debug.Log("Speed" + rb.velocity.normalized);
-
-
-        //Caleb change -- Commented this out and instead just stopped adding velocity when A is being held.
-
-        //// Apply braking force when 'A' is pressed
-        //if (moveHorizontal < 0)
-        //{
-
-        //    Vector2 brakeDirection = -rb.velocity.normalized;
-        //    Vector2 brakeForceVector = brakeDirection * brakeForce;
-        //    rb.AddForce(brakeForceVector, ForceMode2D.Force);
-        //    Debug.Log("Breaking");
-        //}
 
 
         if (Input.GetButtonDown("Jump"))
@@ -77,25 +66,34 @@ public class Minecart : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Caleb change -- here's the boolean that is checked to see if A is being held.
         if (!isBreaking)
         {
-            // cart movement
-            float moveHorizontal = Input.GetAxisRaw("Horizontal");
-
-            rb.AddForce(Vector2.right * fowardSpeed, 0);
-
-            if (rb.velocity.magnitude > maxSpeed)
+            if(rb.velocity.x >= maxSpeed)
             {
-                rb.velocity = rb.velocity.normalized * maxSpeed;
 
             }
+            else
+            {
+                rb.AddForce(Vector2.right * forwardSpeed, 0);
+
+            }       
         }
+
     }
 
     private void Jump()
     {
-        rb.AddForce(new Vector2(rb.velocity.x, jumpForce)); // makes the minecart jump
+        if (!isJumping)
+        {
+            rb.AddForce(new Vector2(rb.velocity.x, jumpForce)); // makes the minecart jump
+            transform.GetComponent<Animator>().Play("MinecartJump");
+            isJumping = true;
+            movement.Pause();
+        }
+        else
+        {
+            movement.Play();
+        }
     }
 
 
@@ -105,24 +103,43 @@ public class Minecart : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Zombie"))        // Handles collisions of the enemies (Zombies, bats, etc.)
         {
-            health = health - 10;
-            healthUI.text = "Health: " + health;
-            if (health == 0)
+            Zombie zombie = collision.gameObject.GetComponent<Zombie>();
+
+            cartHealth -= 10;
+            healthUI.text = "Health: " + cartHealth;
+            if (cartHealth == 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            else if (zombie != null && rb.velocity.magnitude >= 5)
+            {
+                cartHealth -= 10;
+                zombie.Death(); // calls the death method from the zombie script 
+                Vector2 pushBackDirection = (transform.position - collision.transform.position).normalized;
+                rb.AddForce(pushBackDirection * 10, ForceMode2D.Impulse);   // Knockback when the cart hits the zombie at max speed
             }
         }
 
         if (collision.gameObject.CompareTag("Hazard"))
         {
-            health = health - 10;
-            healthUI.text = "Health: " + health;
-            if (health == 0)
+            crash.Play();
+            cartHealth -= 10;
+            healthUI.text = "Health: " + cartHealth;
+            if (cartHealth == 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //Handles collisions of the hazards.
             }
 
 
+        }
+
+        if (isJumping)
+        {
+            if(collision.gameObject.CompareTag("track"))
+            {
+                isJumping = false;
+                movement.Play();
+            }
         }
 
     }

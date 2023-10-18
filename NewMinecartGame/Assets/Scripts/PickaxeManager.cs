@@ -16,6 +16,8 @@ public class PickaxeManager : MonoBehaviour
     public int diamond = 0;
     public int invine = 0;
 
+    public AudioSource mining; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,22 +30,28 @@ public class PickaxeManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             transform.GetComponent<Animator>().Play("PickaxeSwing");
+            
+
             if (inRange && oreManager.oreHealth > 0)
             {
                 if (currentOre.tag == "goldOre")
                 {
+                    mining.Play();
                     gold++;
                 }
                 else if (currentOre.tag == "diamondOre")
                 {
+                    mining.Play();
                     diamond++;
                 }
                 else if (currentOre.tag == "invineOre")
                 {
+                    mining.Play();
                     invine++;
                 }
                 else
                 {
+                    mining.Play();
                     Debug.Log("Something went wrong. Or you mined rock.");
                 }
 
@@ -63,6 +71,7 @@ public class PickaxeManager : MonoBehaviour
             currentOre = collision.gameObject;
             oreManager = collision.GetComponent<OreManager>();
             inRange = true;
+            
         }
     }
 

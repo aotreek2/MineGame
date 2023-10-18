@@ -29,24 +29,37 @@ public class MinerTest : MonoBehaviour
             if (!isDucking)
             {
                 // Trigger the "Duck" animation
-                animator.SetTrigger("Duck");
+                //animator.SetTrigger("Duck");
+                animator.Play("Miner Ducking");
                 isDucking = true;
                 standingCollider.enabled = false;
                 
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.W)) // when player presses W, miner rises
+        else if (Input.GetKeyUp(KeyCode.S))
         {
             if (isDucking)
             {
                 // Trigger the "RiseFromDuck" animation
-                animator.SetTrigger("Rising");
+                //animator.SetTrigger("Rising");
+                animator.Play("Miner Rising");
                 isDucking = false;
                 standingCollider.enabled = true;
-                
+
             }
         }
+
+        //if (Input.GetKeyDown(KeyCode.W)) // when player presses W, miner rises
+        //{
+        //    if (isDucking)
+        //    {
+        //        // Trigger the "RiseFromDuck" animation
+        //        animator.SetTrigger("Rising");
+        //        isDucking = false;
+        //        standingCollider.enabled = true;
+        //        
+        //    }
+        //}
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -59,6 +72,7 @@ public class MinerTest : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
+
         }
 
         if (collision.gameObject.CompareTag("Hazard"))

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 88c46321ac2ccea47b60100f00d4f3ca
+guid: a976c0403d803014291a34b4339e9f78
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ezgif.com-gif-maker_0
+      name: zombie sprite sheet_0
       rect:
         serializedVersion: 2
-        x: 872
-        y: 368
-        width: 8
-        height: 8
+        x: 0
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b02bf0a49d6d9b6449c269757d3fbd2e
-      internalID: -1051240171
+      spriteID: 320604c2a83c42643a6efa746e9ac6a6
+      internalID: 1760564004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker_1
+      name: zombie sprite sheet_1
       rect:
         serializedVersion: 2
-        x: 1248
-        y: 368
-        width: 8
-        height: 8
+        x: 128
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b569ac36b260eea4a92856149f8776ce
-      internalID: -447887393
+      spriteID: c57084e3584f76643847597ebffb7c81
+      internalID: -399392283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker_2
+      name: zombie sprite sheet_2
       rect:
         serializedVersion: 2
-        x: 552
-        y: 360
-        width: 8
-        height: 8
+        x: 256
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85a7f3f08471073478e305a020f2ab3e
-      internalID: -1828460791
+      spriteID: ecab406d26ff10349ae3d20aed4aa51a
+      internalID: 1321803671
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker_3
+      name: zombie sprite sheet_3
       rect:
         serializedVersion: 2
-        x: 120
-        y: 192
-        width: 144
-        height: 185
+        x: 384
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ffb8ea9471ea0745930a63b7e223fee
-      internalID: 1530651146
+      spriteID: e945ae2b13287df478a6bca3ef40bb01
+      internalID: -282630494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker_4
+      name: zombie sprite sheet_4
       rect:
         serializedVersion: 2
-        x: 456
-        y: 192
-        width: 144
-        height: 185
+        x: 512
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 301689b6dfd839e4687149a04546c4c9
-      internalID: 1282095952
+      spriteID: d07b13dd96e36804b936f9142f8e8ddf
+      internalID: -171670931
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker_5
+      name: zombie sprite sheet_5
       rect:
         serializedVersion: 2
-        x: 792
-        y: 192
-        width: 144
-        height: 185
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,29 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34dc29cb28aab05458ca9ec324a7e0b4
-      internalID: 597085078
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ezgif.com-gif-maker_6
-      rect:
-        serializedVersion: 2
-        x: 1128
-        y: 192
-        width: 144
-        height: 185
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 299151339e30e5d428c1d2786a5e6812
-      internalID: -1224522937
+      spriteID: 6a392cdf46a123e44b3f99d1195716ec
+      internalID: -1113198545
       vertices: []
       indices: 
       edges: []
@@ -267,13 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ezgif.com-gif-maker_0: -1051240171
-      ezgif.com-gif-maker_1: -447887393
-      ezgif.com-gif-maker_2: -1828460791
-      ezgif.com-gif-maker_3: 1530651146
-      ezgif.com-gif-maker_4: 1282095952
-      ezgif.com-gif-maker_5: 597085078
-      ezgif.com-gif-maker_6: -1224522937
+      zombie sprite sheet_0: 1760564004
+      zombie sprite sheet_1: -399392283
+      zombie sprite sheet_2: 1321803671
+      zombie sprite sheet_3: -282630494
+      zombie sprite sheet_4: -171670931
+      zombie sprite sheet_5: -1113198545
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
