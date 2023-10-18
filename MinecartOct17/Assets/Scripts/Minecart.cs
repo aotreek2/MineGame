@@ -126,14 +126,21 @@ public class Minecart : MonoBehaviour
             {
 
                 zombie.Death();  // calls the death method from the zombie script 
+                crash.Play();
 
-                Vector2 pushBackDirection = (transform.position - collision.transform.position).normalized;
-                rb.AddForce(pushBackDirection * 10, ForceMode2D.Impulse);   // Knockback when the cart hits the zombie at max speed
+
+                // I assume this was meant to go when the zombie hit's the player, not here when the zombie just dies?
+
+                //Vector2 pushBackDirection = (transform.position - collision.transform.position).normalized;
+                //rb.AddForce(pushBackDirection * 10, ForceMode2D.Impulse);   // Knockback when the cart hits the zombie at max speed
             }
             else
             {
                 healthSlider.value -= 5;
                 healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
+
+                Vector2 pushBackDirection = (transform.position - collision.transform.position).normalized;
+                rb.AddForce(pushBackDirection * 10, ForceMode2D.Impulse);   // Knockback when the cart hits the zombie at max speed
             }
         }
 
