@@ -9,14 +9,15 @@ public class MinerTest : MonoBehaviour
     private Animator animator;
     private bool isDucking;
     private Collider2D standingCollider;
-    int health = 50;
-    public TMP_Text healthMinerUI;
+
+    public TMP_Text healthUI;
+    public UnityEngine.UI.Slider healthSlider;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         standingCollider = GetComponent<Collider2D>();
-        healthMinerUI.text = "Health: " + health;
+        //healthMinerUI.text = "Health: " + health;
 
     }
 
@@ -65,9 +66,10 @@ public class MinerTest : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Zombie"))        // Handles collisions of the enemies (Zombies, bats, etc.)
         {
-            health = health - 10;
-            healthMinerUI.text = "Health: " + health;
-            if (health == 0)
+            healthSlider.value -= 10;
+            healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
+
+            if (healthSlider.value <= 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
@@ -75,9 +77,9 @@ public class MinerTest : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Hazard"))
         {
-            health = health - 10;
-            healthMinerUI.text = "Health: " + health;
-            if (health == 0)
+            healthSlider.value -= 10;
+            healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
+            if (healthSlider.value <= 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //Handles collisions of the hazards.
             }

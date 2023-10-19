@@ -31,7 +31,6 @@ public class Minecart : MonoBehaviour
     public UnityEngine.UI.Slider minecartHealthSlider;
 
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +44,7 @@ public class Minecart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (Input.GetKey(KeyCode.A))
         {
             isBreaking = true;
@@ -54,6 +53,11 @@ public class Minecart : MonoBehaviour
             {
                 rb.AddForce(Vector2.left * brakeForce);
             }
+            else
+            {
+
+            }
+
         }
         else
         {
@@ -69,22 +73,20 @@ public class Minecart : MonoBehaviour
         }
     }
 
-
     private void FixedUpdate()
     {
+
         if (!isBreaking)
         {
             if (rb.velocity.magnitude >= maxSpeed)
             {
-                
+
             }
             else
             {
                 rb.AddForce(Vector2.right * fowardSpeed, ForceMode2D.Impulse);
             }
         }
-
-        
     }
 
     private void Jump()
@@ -99,7 +101,7 @@ public class Minecart : MonoBehaviour
         }
         else
         {
-
+            
         }
     }
 
@@ -124,11 +126,6 @@ public class Minecart : MonoBehaviour
                 zombie.Death();  // calls the death method from the zombie script 
                 crash.Play();
 
-
-                // I assume this was meant to go when the zombie hit's the player, not here when the zombie just dies?
-
-                //Vector2 pushBackDirection = (transform.position - collision.transform.position).normalized;
-                //rb.AddForce(pushBackDirection * 10, ForceMode2D.Impulse);   // Knockback when the cart hits the zombie at max speed
             }
             else
             {

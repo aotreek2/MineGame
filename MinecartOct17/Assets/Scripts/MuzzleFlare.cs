@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class MuzzleFlare : MonoBehaviour
 {
+
+    public PlayerAimWeapon gunScript;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +24,7 @@ public class MuzzleFlare : MonoBehaviour
 
     public void MuzzleFlareFade()
     {
+        gunScript.shooting = false;
         gameObject.SetActive(false);
     }
 
