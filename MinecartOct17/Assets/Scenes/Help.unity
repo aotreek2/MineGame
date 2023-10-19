@@ -157,13 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-<<<<<<< HEAD
-  m_AnchoredPosition: {x: 353.81396, y: -22.196594}
-  m_SizeDelta: {x: 706.1782, y: 468.599}
-=======
   m_AnchoredPosition: {x: 363, y: -106.268105}
   m_SizeDelta: {x: 706.1782, y: 212.5262}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &106149682
 MonoBehaviour:
@@ -228,13 +223,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-<<<<<<< HEAD
-  m_fontSize: 36
-  m_fontSizeBase: 36
-=======
   m_fontSize: 20
   m_fontSizeBase: 20
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -362,10 +352,6 @@ GameObject:
   - component: {fileID: 1090351410}
   - component: {fileID: 1090351412}
   - component: {fileID: 1090351411}
-<<<<<<< HEAD
-=======
-  - component: {fileID: 1090351413}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -433,21 +419,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090351409}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
-=======
---- !u!114 &1090351413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090351409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7d5693beefda974593f1b496ac40580, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
 --- !u!1 &1205184437
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,11 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  m_UiScaleMode: 0
-=======
   m_UiScaleMode: 1
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -580,11 +547,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1291413604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: 60bcc448549293d44a04fe67dfc1d75d, type: 3}
-=======
   m_Script: {fileID: 11500000, guid: 0d20413ee16686a4092f41553e647068, type: 3}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1291413606
@@ -636,13 +599,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-<<<<<<< HEAD
-  m_AnchoredPosition: {x: 320, y: -89.07739}
-  m_SizeDelta: {x: 634.9275, y: 174.689}
-=======
   m_AnchoredPosition: {x: 398.63, y: -114.20253}
   m_SizeDelta: {x: 634.9275, y: 211.094}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1416464326
 MonoBehaviour:
@@ -666,14 +624,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Overview:
 
-<<<<<<< HEAD
-    Reach th center of gold killing monsters and collecting
-    gold nuggets as preview of whats to come'
-=======
     Your goal is to reach a legendary core of gold at the center
     of this mine. Along the way, you''ll mine other various ores to sustain yourself.
     You''ll also have to deal with those who failed before you.'
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -700,23 +653,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-<<<<<<< HEAD
-  m_fontSize: 36
-  m_fontSizeBase: 36
-=======
   m_fontSize: 30
   m_fontSizeBase: 30
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-<<<<<<< HEAD
-  m_HorizontalAlignment: 1
-=======
   m_HorizontalAlignment: 2
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -934,15 +878,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< HEAD
       - m_Target: {fileID: 1291413605}
         m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
         m_MethodName: BackbuttonClick
-=======
-      - m_Target: {fileID: 1090351413}
-        m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-        m_MethodName: BackButtonClick
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

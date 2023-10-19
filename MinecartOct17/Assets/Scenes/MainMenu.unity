@@ -159,11 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-<<<<<<< HEAD
-  m_AnchoredPosition: {x: 166.91449, y: 4}
-=======
   m_AnchoredPosition: {x: 189, y: -145.84}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_SizeDelta: {x: 243.1261, y: 68.5942}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &167170590
@@ -210,11 +206,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< HEAD
       - m_Target: {fileID: 1569848889}
-=======
-      - m_Target: {fileID: 312576966}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
         m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
         m_MethodName: LevelSelectButtonClick
         m_Mode: 1
@@ -300,11 +292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-<<<<<<< HEAD
-  m_AnchoredPosition: {x: 166.91449, y: 223}
-=======
   m_AnchoredPosition: {x: 606, y: 79.005}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_SizeDelta: {x: 243.1261, y: 68.59424}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &197459084
@@ -351,11 +339,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< HEAD
       - m_Target: {fileID: 1569848889}
-=======
-      - m_Target: {fileID: 312576966}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
         m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
         m_MethodName: OnClickQuitButton
         m_Mode: 1
@@ -416,10 +400,6 @@ GameObject:
   - component: {fileID: 312576963}
   - component: {fileID: 312576965}
   - component: {fileID: 312576964}
-<<<<<<< HEAD
-=======
-  - component: {fileID: 312576966}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -488,21 +468,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312576962}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
-=======
---- !u!114 &312576966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312576962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7d5693beefda974593f1b496ac40580, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
 --- !u!1 &599734100
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,11 +504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-<<<<<<< HEAD
-  m_AnchoredPosition: {x: 166.91449, y: -87}
-=======
   m_AnchoredPosition: {x: 189, y: -87.005}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_SizeDelta: {x: 243.1261, y: 68.59421}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &599734102
@@ -590,11 +551,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< HEAD
       - m_Target: {fileID: 1569848889}
-=======
-      - m_Target: {fileID: 312576966}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
         m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
         m_MethodName: StartButtonClick
         m_Mode: 1
@@ -772,11 +729,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-<<<<<<< HEAD
-  m_AnchoredPosition: {x: 166.91449, y: 158}
-=======
   m_AnchoredPosition: {x: 606, y: 137.84}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_SizeDelta: {x: 243.1261, y: 68.5942}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225067016
@@ -823,11 +776,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< HEAD
       - m_Target: {fileID: 1569848889}
-=======
-      - m_Target: {fileID: 312576966}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
         m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
         m_MethodName: OnHelpButtonClick
         m_Mode: 1
@@ -1129,11 +1078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  m_UiScaleMode: 0
-=======
   m_UiScaleMode: 1
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1213,11 +1158,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1569848888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: 60bcc448549293d44a04fe67dfc1d75d, type: 3}
-=======
   m_Script: {fileID: 11500000, guid: 0d20413ee16686a4092f41553e647068, type: 3}
->>>>>>> d64eec6d30bf1fd027a5ee374d4ef3f35a2d6089
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1569848890
