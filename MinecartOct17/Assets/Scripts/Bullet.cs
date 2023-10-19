@@ -15,9 +15,9 @@ public class Bullet : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D kill)
+    private void OnCollisionEnter2D(Collision2D kill)
     {
-      Zombie zombie = kill.GetComponent<Zombie>();
+      Zombie zombie = kill.gameObject.GetComponent<Zombie>();
         if (zombie != null)
         {
             zombie.TakeDamage(damage);
@@ -25,4 +25,8 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Destroy(this.gameObject);
+    }
 }

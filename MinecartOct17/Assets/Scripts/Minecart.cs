@@ -62,10 +62,6 @@ public class Minecart : MonoBehaviour
         }
 
 
-        FixedUpdate();
-        Debug.Log("Speed" + rb.velocity.normalized + "");
-
-
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -84,7 +80,7 @@ public class Minecart : MonoBehaviour
             }
             else
             {
-                rb.AddForce(Vector2.right * fowardSpeed, 0);
+                rb.AddForce(Vector2.right * fowardSpeed, ForceMode2D.Impulse);
             }
         }
 
