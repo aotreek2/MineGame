@@ -11,9 +11,9 @@ public class PlayerAimWeapon : MonoBehaviour
 
     public bool shooting = false;
     public TMP_Text ammoUI;
-    private int maxAmmo = 8;
+    public int maxAmmo = 8;
     public int magazineAmmo = 8;
-    public int totalAmmo = 36;
+    public int reservedAmmo = 36;
 
     public event EventHandler<onShootEventArgs> onShoot;
     public class onShootEventArgs : EventArgs
@@ -42,6 +42,11 @@ public class PlayerAimWeapon : MonoBehaviour
     {
         HandleAiming();
         handleShooting();
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reload();
+        }
     }
 
 
@@ -64,7 +69,8 @@ public class PlayerAimWeapon : MonoBehaviour
                 if(magazineAmmo>0)
                 {
                     magazineAmmo--;
-                                        shooting = true;
+                    shooting = true;
+
                     Vector3 mousePosition = GetMousePosition();
                     onShoot?.Invoke(this, new onShootEventArgs
                     {
@@ -73,31 +79,18 @@ public class PlayerAimWeapon : MonoBehaviour
                         BulletPosition = aimBulletPositionTransform.position,
 
                     });
-                    Debug.Log(mousePosition);
 
+                    // Spawns bullet
                     Instantiate(bullletPrefab, aimGunEndPointTransform.position, aimGunEndPointTransform.rotation);
 
-                    //makes muzzle flare
+
+                    //makes muzzle flare, and in the animation it sets shooting back to false
                     gunAnimation.gameObject.SetActive(true);
                     gunAnimation.GetComponent<Animator>().Play("MuzzleFlare");
                 }
-                else if(magazineAmmo == 0) // If there are no bullets in the magazine, this happens.
+                else if(magazineAmmo <= 0) // If there are no bullets in the magazine, this happens.
                 {
-                    if(totalAmmo >= 8) // If there is at least a full magazine of ammo in the reserve, it reloads that.
-                    {
-                        totalAmmo -= 8;
-                        magazineAmmo += 8;
-                    }
-                    else if(totalAmmo > 0) // If there is less than a full magazine but at least some in the reserve, whatever is left is loaded.
-                    {
-                        magazineAmmo = totalAmmo;
-                        magazineAmmo = 0;
-                    }
-                    else
-                    {
-                        Debug.Log("EMPTY");
-                        //Click sound
-                    }
+                    Reload();
                 }
 
                 UpdateAmmo();
@@ -106,9 +99,36 @@ public class PlayerAimWeapon : MonoBehaviour
         }
     }
 
+    public void Reload()
+    {
+        if (reservedAmmo >= 8) // If there is at least a full magazine of ammo in the reserve, it reloads that.
+        {
+            reservedAmmo -= (maxAmmo-magazineAmmo);
+            magazineAmmo += (maxAmmo-magazineAmmo);
+        }
+        else if (reservedAmmo > 0) // If there is less than a full magazine but at least some in the reserve, whatever is left is loaded.
+        {
+            if (reservedAmmo >= (maxAmmo-magazineAmmo))
+            {
+                reservedAmmo -= (maxAmmo-magazineAmmo);
+                magazineAmmo = maxAmmo;
+            }
+            else
+            {
+                magazineAmmo += reservedAmmo;
+                reservedAmmo = 0;
+            }
+        }
+        else
+        {
+            Debug.Log("EMPTY");
+            //Click sound
+        }
+    }
+
     public void UpdateAmmo()
     {
-        ammoUI.text = "[" + magazineAmmo + "/" + maxAmmo + "] - [" + totalAmmo + "]";
+        ammoUI.text = "[" + magazineAmmo + "/" + maxAmmo + "] - [" + reservedAmmo + "]";
     }
 
 
