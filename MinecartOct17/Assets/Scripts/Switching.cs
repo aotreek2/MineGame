@@ -10,7 +10,10 @@ public class Switching : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Torch by default
+        PlayerState[0].SetActive(true);
+        PlayerState[1].SetActive(false);
+        PlayerState[2].SetActive(false);
     }
 
     // Update is called once per frame
@@ -21,6 +24,7 @@ public class Switching : MonoBehaviour
         {
             PlayerState[0].SetActive(true);
             PlayerState[1].SetActive(false);
+            PlayerState[1].GetComponent<PickaxeManager>().active = false;
             PlayerState[2].SetActive(false);
         }
 
@@ -28,12 +32,14 @@ public class Switching : MonoBehaviour
         {
             PlayerState[0].SetActive(false);
             PlayerState[1].SetActive(true);
+            PlayerState[1].GetComponent<PickaxeManager>().active = true;
             PlayerState[2].SetActive(false);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             PlayerState[0].SetActive(false);
             PlayerState[1].SetActive(false);
+            PlayerState[1].GetComponent<PickaxeManager>().active = false;
             PlayerState[2].SetActive(true);
         }
     }

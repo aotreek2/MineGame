@@ -6,11 +6,6 @@ using UnityEngine;
 
 public class PickaxeManager : MonoBehaviour
 {
-
-    public bool inRange = false;
-    public GameObject currentOre;
-    public OreManager oreManager;
-
     public TextMeshProUGUI oreStats;
     public int gold = 0;
     public int diamond = 0;
@@ -20,6 +15,9 @@ public class PickaxeManager : MonoBehaviour
 
     // Ore ping thing
     public Animator orePing;
+
+    public bool active = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,75 +31,67 @@ public class PickaxeManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             transform.GetComponent<Animator>().Play("PickaxeSwing");
+        }
+    }
 
-
-            if (inRange && oreManager.oreHealth > 0)
+    public void SwingPickaxe(GameObject minedObject)
+    {
+        if (active == true)
+        {
+            if (minedObject.tag == "goldOre" || minedObject.tag == "invineOre" || minedObject.tag == "diamondOre" || minedObject.tag == "rock")
             {
-                if (currentOre.tag == "goldOre")
-                {
-                    gold++;
-                }
-                else if (currentOre.tag == "diamondOre")
-                {
-                    diamond++;
-                }
-                else if (currentOre.tag == "invineOre")
-                {
-                    invine++;
-                }
-                else
-                {
-                    Debug.Log("Something went wrong. Or you mined rock.");
-                }
-
-               // orePing.Play("OrePing");
-
+                //Plays sound and makes sparks
                 mining.pitch = Random.Range(1f, 1.8f);
                 mining.Play();
+                minedObject.transform.parent.transform.GetChild(1).transform.GetComponent<ParticleSystem>().Play();
 
-                oreManager.oreHealth--;
-                
+                //Adds correct ore
+                switch (minedObject.tag)
+                {
+                    case "goldOre":
+                        gold++;
+                        break;
+                    case "invineOre":
+                        invine++;
+                        break;
+                    case "diamondOre":
+                        diamond++;
+                        break;
+                    default:
+                        break;
+                }
 
+                //Damages ore and checks if it should be destroyed
+                minedObject.GetComponent<MineableObject>().objectHealth -= 1;
+                if (minedObject.GetComponent<MineableObject>().objectHealth <= 0)
+                {
+                    Destroy(minedObject);
+                }
+
+                //Updates UI
                 UpdateOres();
             }
+            else if (minedObject.tag == "Zombie")
+            {
+                mining.pitch = Random.Range(1f, 1.8f);
+                mining.Play();
+                minedObject.transform.parent.transform.GetChild(1).transform.GetComponent<ParticleSystem>().Play();
 
+                minedObject.GetComponent<Zombie>().TakeDamage(1);
+            }
+            else if (minedObject.tag == "Bat")
+            {
+
+            }
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "goldOre" || collision.tag == "diamondOre" || collision.tag == "invineOre" || collision.tag == "rock")
+        else
         {
-            currentOre = collision.gameObject;
-            oreManager = collision.GetComponent<OreManager>();
-            inRange = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "goldOre" || collision.tag == "diamondOre" || collision.tag == "invineOre" || collision.tag == "rock")
-        {
-            inRange = false;
+            Debug.Log("Pickaxe not active");
         }
     }
 
     public void UpdateOres()
     {
         oreStats.text = $"Gold: {gold} / Diamond: {diamond} / Invine: {invine}";
-    }
-
-    public void Sparks()
-    {
-        if (inRange)
-        {
-            currentOre.transform.parent.GetChild(1).transform.GetComponent<ParticleSystem>().Play();
-            //currentOre.transform.GetChild(0).transform.GetComponent<ParticleSystem>().Play();
-
-            if (oreManager.oreHealth <= 0)
-            {
-                currentOre.SetActive(false);
-            }
-        }
     }
 }

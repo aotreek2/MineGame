@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Zombie : MonoBehaviour
 {
     public Transform player;
+
     private float distance;
     public float speed;
     public float distanceBetween = 7;
+
     public Animator zombie;
     private Rigidbody2D rb;
     public AudioSource zombieGroan;
-    public int health = 100;
-   
 
+    public int zombieHealth = 5;
+    public UnityEngine.UI.Slider zombieSlider;
+    public PickaxeManager pickaxeManager;
 
     // Start is called before the first frame update
     void Start()
@@ -52,20 +56,27 @@ public class Zombie : MonoBehaviour
 
     public void TakeDamage (int damage)
     {
-        health -= damage;
-        if (health <= 0)
+        zombieHealth -= damage;
+        zombieSlider.gameObject.SetActive(true);
+        zombieSlider.value = zombieHealth;
+
+        if (zombieHealth <= 0)
         {
             Death();
         }
-        
-
-        
     }
 
     public void Death()
     {
         Destroy(this.gameObject);
+    }
 
+    private void OnMouseDown()
+    {
+        if (pickaxeManager.active)
+        {
+            pickaxeManager.SwingPickaxe(gameObject);
+        }
     }
 }
 
