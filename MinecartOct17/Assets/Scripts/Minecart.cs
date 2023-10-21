@@ -30,6 +30,9 @@ public class Minecart : MonoBehaviour
     public UnityEngine.UI.Slider healthSlider;
     public UnityEngine.UI.Slider minecartHealthSlider;
 
+    public ParticleSystem FrontWheelParticle;
+    public ParticleSystem BackWheelParticle;
+
 
     // Start is called before the first frame update
     void Start()
@@ -52,17 +55,28 @@ public class Minecart : MonoBehaviour
             if (rb.velocity.x > 2)
             {
                 rb.AddForce(Vector2.left * brakeForce);
+                if (!BackWheelParticle.isEmitting && !isJumping)
+                {
+                    BackWheelParticle.Play();
+                    FrontWheelParticle.Play();
+                }
             }
             else
             {
-
+                BackWheelParticle.Stop();
+                FrontWheelParticle.Stop();
             }
 
+            transform.GetComponent<Animator>().Play("MinecartStopped");
         }
         else if (Input.GetKeyUp(KeyCode.A))
         {
             isBreaking = false;
-            movement.Pause();
+            //movement.Pause();
+            transform.GetComponent<Animator>().Play("MinecartRolling");
+
+            BackWheelParticle.Stop();
+            FrontWheelParticle.Stop();
         }
 
 
