@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
-
+    private bool hasStarted = false;
     public GameObject startingPanel;
     public GameObject startingBlock;
 
@@ -20,8 +20,9 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && hasStarted == false)
         {
+            hasStarted = true;
             startingBlock.SetActive(false);
             startingPanel.SetActive(false);
 

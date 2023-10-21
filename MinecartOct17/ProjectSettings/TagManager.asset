@@ -11,6 +11,7 @@ TagManager:
   - track
   - invineOre
   - CeilingHazard
+  - diamondOre
   layers:
   - Default
   - TransparentFX

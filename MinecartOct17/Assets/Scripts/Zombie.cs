@@ -15,7 +15,7 @@ public class Zombie : MonoBehaviour
     private Rigidbody2D rb;
     public AudioSource zombieGroan;
 
-    public int zombieHealth = 5;
+    private int zombieHealth = 10;
     public UnityEngine.UI.Slider zombieSlider;
     public PickaxeManager pickaxeManager;
 

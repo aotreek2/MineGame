@@ -12,6 +12,7 @@ public class PickaxeManager : MonoBehaviour
     public int invine = 0;
 
     public AudioSource mining;
+    public AudioSource diamondTing;
 
     // Ore ping thing
     public Animator orePing;
@@ -56,6 +57,7 @@ public class PickaxeManager : MonoBehaviour
                         break;
                     case "diamondOre":
                         diamond++;
+                        diamondTing.Play();
                         break;
                     default:
                         break;
@@ -77,7 +79,7 @@ public class PickaxeManager : MonoBehaviour
                 mining.Play();
                 minedObject.transform.parent.transform.GetChild(1).transform.GetComponent<ParticleSystem>().Play();
 
-                minedObject.GetComponent<Zombie>().TakeDamage(1);
+                minedObject.GetComponent<Zombie>().TakeDamage(2);
             }
             else if (minedObject.tag == "Bat")
             {

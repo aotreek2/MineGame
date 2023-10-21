@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 20f;
+    private float speed = 30f;
     public Rigidbody2D rb;
-    public int damage = 40;
+    private int damage = 3;
+
+    private float lifetime = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,5 +30,14 @@ public class Bullet : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         Destroy(this.gameObject);
+    }
+
+    private void FixedUpdate()
+    {
+        lifetime += Time.deltaTime;
+        if (lifetime >= 7)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

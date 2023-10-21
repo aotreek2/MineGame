@@ -22,7 +22,7 @@ public class MineableObject : MonoBehaviour
             }
             else if (gameObject.tag == "diamondOre")
             {
-                objectHealth = Random.Range(1, 3);
+                objectHealth = 1;
             }
             else if (gameObject.tag == "invineOre")
             {

@@ -49,7 +49,7 @@ public class Minecart : MonoBehaviour
         {
             isBreaking = true;
             movement.Pause();
-            if (rb.velocity.x > 1)
+            if (rb.velocity.x > 2)
             {
                 rb.AddForce(Vector2.left * brakeForce);
             }
@@ -59,10 +59,10 @@ public class Minecart : MonoBehaviour
             }
 
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.A))
         {
             isBreaking = false;
-            movement.UnPause();
+            movement.Pause();
         }
 
 
@@ -86,6 +86,11 @@ public class Minecart : MonoBehaviour
             {
                 rb.AddForce(Vector2.right * fowardSpeed, ForceMode2D.Impulse);
             }
+        }
+
+        if (rb.velocity.x > 1)
+        {
+            movement.UnPause();
         }
     }
 
@@ -140,6 +145,7 @@ public class Minecart : MonoBehaviour
         if (collision.gameObject.CompareTag("Hazard") || collision.gameObject.CompareTag("rock"))
         {
             crash.Play();
+            movement.Pause();
 
             minecartHealthSlider.value -= 10;
             minecartHealthUI.text = minecartHealthSlider.value + "/" + minecartHealthSlider.maxValue;

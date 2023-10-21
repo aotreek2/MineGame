@@ -182,7 +182,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Pistol Ammo (8)
 
-    [5 Gold]'
+    [10 Gold]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -592,7 +592,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'STG-44 Ammo (30)
 
-    [15 Gold]'
+    [30 Gold]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
