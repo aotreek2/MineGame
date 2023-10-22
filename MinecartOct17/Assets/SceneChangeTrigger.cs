@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneChangeTrigger : MonoBehaviour
 {
+
+    public string nextScene;
+
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene(nextScene);
     }
 }
