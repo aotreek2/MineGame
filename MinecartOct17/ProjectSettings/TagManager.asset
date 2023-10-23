@@ -12,6 +12,7 @@ TagManager:
   - invineOre
   - CeilingHazard
   - diamondOre
+  - ammoBox
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,8 @@ public class Zombie : MonoBehaviour
     private Rigidbody2D rb;
     public AudioSource zombieGroan;
 
+    public AudioSource[] zombieDamage;
+
     private int zombieHealth = 10;
     public UnityEngine.UI.Slider zombieSlider;
     public PickaxeManager pickaxeManager;
@@ -59,6 +61,9 @@ public class Zombie : MonoBehaviour
         zombieHealth -= damage;
         zombieSlider.gameObject.SetActive(true);
         zombieSlider.value = zombieHealth;
+        zombieDamage[Random.Range(0, 3)].Play();
+
+        transform.GetChild(1).transform.GetComponent<ParticleSystem>().Play();
 
         if (zombieHealth <= 0)
         {
@@ -68,12 +73,14 @@ public class Zombie : MonoBehaviour
 
     public void Death()
     {
+        transform.GetChild(1).transform.parent = transform.parent.transform;
         Destroy(this.gameObject);
     }
 
     private void OnMouseDown()
     {
-        if (pickaxeManager.active)
+        print(distance);
+        if (pickaxeManager.active && distance <= 3)
         {
             pickaxeManager.SwingPickaxe(gameObject);
         }

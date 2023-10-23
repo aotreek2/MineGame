@@ -68,6 +68,7 @@ public class PickaxeManager : MonoBehaviour
                 if (minedObject.GetComponent<MineableObject>().objectHealth <= 0)
                 {
                     Destroy(minedObject);
+                    minedObject.transform.parent.transform.GetChild(2).transform.GetComponent<ParticleSystem>().Play();
                 }
 
                 //Updates UI
@@ -77,7 +78,7 @@ public class PickaxeManager : MonoBehaviour
             {
                 mining.pitch = Random.Range(1f, 1.8f);
                 mining.Play();
-                minedObject.transform.parent.transform.GetChild(1).transform.GetComponent<ParticleSystem>().Play();
+                //minedObject.transform.parent.transform.GetChild(1).transform.GetComponent<ParticleSystem>().Play();
 
                 minedObject.GetComponent<Zombie>().TakeDamage(2);
             }
@@ -94,6 +95,6 @@ public class PickaxeManager : MonoBehaviour
 
     public void UpdateOres()
     {
-        oreStats.text = $"Gold: {gold} / Diamond: {diamond} / Invine: {invine}";
+        oreStats.text = $"Gold: {gold} / Invine: {invine} / Diamond: {diamond}";
     }
 }

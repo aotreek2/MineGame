@@ -141,7 +141,7 @@ public class Minecart : MonoBehaviour
             }
             else if (zombie != null && rb.velocity.magnitude >= 5)
             {
-                zombie.transform.parent.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
+                zombie.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
                 zombie.Death();  // calls the death method from the zombie script 
                 crash.Play();
 

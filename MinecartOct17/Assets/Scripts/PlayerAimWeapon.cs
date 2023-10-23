@@ -15,6 +15,9 @@ public class PlayerAimWeapon : MonoBehaviour
     public int magazineAmmo = 8;
     public int reservedAmmo = 36;
 
+    public AudioSource gunFire;
+    public AudioSource reload;
+
     public event EventHandler<onShootEventArgs> onShoot;
     public class onShootEventArgs : EventArgs
     {
@@ -45,7 +48,10 @@ public class PlayerAimWeapon : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Reload();
+            if (magazineAmmo < 8)
+            {
+                Reload();
+            }
         }
     }
 
@@ -70,6 +76,7 @@ public class PlayerAimWeapon : MonoBehaviour
                 {
                     magazineAmmo--;
                     shooting = true;
+                    gunFire.Play();
 
                     Vector3 mousePosition = GetMousePosition();
                     onShoot?.Invoke(this, new onShootEventArgs
@@ -87,13 +94,15 @@ public class PlayerAimWeapon : MonoBehaviour
                     //makes muzzle flare, and in the animation it sets shooting back to false
                     gunAnimation.gameObject.SetActive(true);
                     gunAnimation.GetComponent<Animator>().Play("MuzzleFlare");
+
+                    UpdateAmmo();
                 }
                 else if(magazineAmmo <= 0) // If there are no bullets in the magazine, this happens.
                 {
                     Reload();
                 }
 
-                UpdateAmmo();
+                
                 
             }
         }
@@ -103,11 +112,13 @@ public class PlayerAimWeapon : MonoBehaviour
     {
         if (reservedAmmo >= 8) // If there is at least a full magazine of ammo in the reserve, it reloads that.
         {
+            reload.Play();
             reservedAmmo -= (maxAmmo-magazineAmmo);
             magazineAmmo += (maxAmmo-magazineAmmo);
         }
         else if (reservedAmmo > 0) // If there is less than a full magazine but at least some in the reserve, whatever is left is loaded.
         {
+            reload.Play();
             if (reservedAmmo >= (maxAmmo-magazineAmmo))
             {
                 reservedAmmo -= (maxAmmo-magazineAmmo);
@@ -124,11 +135,12 @@ public class PlayerAimWeapon : MonoBehaviour
             Debug.Log("EMPTY");
             //Click sound
         }
+        UpdateAmmo();
     }
 
     public void UpdateAmmo()
     {
-        ammoUI.text = "[" + magazineAmmo + "/" + maxAmmo + "] - [" + reservedAmmo + "]";
+        ammoUI.text = "[" + magazineAmmo + "/" + maxAmmo + "]-[" + reservedAmmo + "]";
     }
 
 
