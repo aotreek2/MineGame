@@ -10,6 +10,7 @@ public class PlayerAimWeapon : MonoBehaviour
     public GameObject bullletPrefab;
 
     public bool shooting = false;
+   
     public TMP_Text ammoUI;
     public int maxAmmo = 8;
     public int magazineAmmo = 8;
@@ -17,6 +18,8 @@ public class PlayerAimWeapon : MonoBehaviour
 
     public AudioSource gunFire;
     public AudioSource reload;
+
+   
 
     public event EventHandler<onShootEventArgs> onShoot;
     public class onShootEventArgs : EventArgs
@@ -39,6 +42,8 @@ public class PlayerAimWeapon : MonoBehaviour
         aimGunEndPointTransform = aimTransform.Find("GunEndPointPosition");
 
         UpdateAmmo();
+        
+       
     }
 
     private void Update()
@@ -53,6 +58,7 @@ public class PlayerAimWeapon : MonoBehaviour
                 Reload();
             }
         }
+
     }
 
 

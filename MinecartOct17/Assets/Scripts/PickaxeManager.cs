@@ -16,14 +16,20 @@ public class PickaxeManager : MonoBehaviour
 
     // Ore ping thing
     public Animator orePing;
+    private Animator animator;
+
 
     public bool active = false;
+    private bool isDucking;
+    private Collider2D standingCollider;
 
 
     // Start is called before the first frame update
     void Start()
     {
         //orePing = transform.GetChild(0).GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+        standingCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -33,7 +39,32 @@ public class PickaxeManager : MonoBehaviour
         {
             transform.GetComponent<Animator>().Play("PickaxeSwing");
         }
+
+        if (Input.GetKeyDown(KeyCode.S)) // when player presses S, miner ducks
+        {
+            if (!isDucking)
+            {
+                // Trigger the "Duck" animation
+                //animator.SetTrigger("Duck");
+                animator.Play("axeduck");
+                isDucking = true;
+                standingCollider.enabled = false;
+
+            }
+        }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            if (isDucking)
+            {
+                // Trigger the "RiseFromDuck" animation
+                //animator.SetTrigger("Rising");
+                animator.Play("axerising");
+                isDucking = false;
+                standingCollider.enabled = true;
+            }
+        }
     }
+
 
     public void SwingPickaxe(GameObject minedObject)
     {
