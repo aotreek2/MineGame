@@ -20,10 +20,19 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D kill)
     {
       Zombie zombie = kill.gameObject.GetComponent<Zombie>();
+      Bat bat = kill.gameObject.GetComponent<Bat>();
+
         if (zombie != null)
         {
             zombie.TakeDamage(damage);
         }
+
+        if(bat != null)
+        {
+            bat.TakeDamage(damage);
+        }
+
+
         Destroy(gameObject);
     }
 

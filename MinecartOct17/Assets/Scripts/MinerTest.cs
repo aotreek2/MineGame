@@ -9,6 +9,7 @@ public class MinerTest : MonoBehaviour
     private Animator animator;
     private bool isDucking;
     private Collider2D standingCollider;
+    public AudioSource[] minerDamage;
 
     public TMP_Text healthUI;
     public UnityEngine.UI.Slider healthSlider;
@@ -17,6 +18,7 @@ public class MinerTest : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         standingCollider = GetComponent<Collider2D>();
+        
         //healthMinerUI.text = "Health: " + health;
 
     }
@@ -68,6 +70,7 @@ public class MinerTest : MonoBehaviour
         {
             healthSlider.value -= 10;
             healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
+            minerDamage[Random.Range(0, minerDamage.Length)].Play();
 
             if (healthSlider.value <= 0)
             {
@@ -79,6 +82,21 @@ public class MinerTest : MonoBehaviour
         {
             healthSlider.value -= 10;
             healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
+            minerDamage[Random.Range(0, minerDamage.Length)].Play();
+
+            if (healthSlider.value <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //Handles collisions of the hazards.
+            }
+        }
+
+        if (collision.gameObject.CompareTag("bat"))
+        {
+            healthSlider.value -= 10;
+            healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
+            minerDamage[Random.Range(0, minerDamage.Length)].Play();
+           
+
             if (healthSlider.value <= 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //Handles collisions of the hazards.

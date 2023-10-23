@@ -172,6 +172,31 @@ public class Minecart : MonoBehaviour
 
         }
 
+        if(collision.gameObject.CompareTag("bat"))
+        {
+            Bat bat = collision.gameObject.GetComponent<Bat>();
+
+            minecartHealthSlider.value -= 10;
+            minecartHealthUI.text = minecartHealthSlider.value + "/" + minecartHealthSlider.maxValue;
+
+            if (minecartHealthSlider.value <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            else if (bat != null && rb.velocity.magnitude >= 5)
+            {
+
+            }
+            else
+            {
+                healthSlider.value -= 5;
+                healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
+
+                Vector2 pushBackDirection = (transform.position - collision.transform.position).normalized;
+                rb.AddForce(pushBackDirection * 10, ForceMode2D.Impulse);   // Knockback when the cart hits the zombie at max speed
+            }
+        }
+
         if (isJumping)
         {
             if(collision.gameObject.CompareTag("track"))

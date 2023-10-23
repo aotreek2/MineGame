@@ -82,9 +82,12 @@ public class PickaxeManager : MonoBehaviour
 
                 minedObject.GetComponent<Zombie>().TakeDamage(2);
             }
-            else if (minedObject.tag == "Bat")
+            else if (minedObject.tag == "bat")
             {
+                mining.pitch = Random.Range(1f, 1.8f);
+                mining.Play();
 
+                minedObject.GetComponent<Bat>().TakeDamage(2);
             }
         }
         else
