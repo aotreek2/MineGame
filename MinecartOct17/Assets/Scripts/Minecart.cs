@@ -19,7 +19,7 @@ public class Minecart : MonoBehaviour
     public AudioSource crash;
     public AudioSource movement;
 
-  
+
 
     //Caleb change -- added this bool for checking breaking.
     public bool isBreaking = false;
@@ -33,21 +33,22 @@ public class Minecart : MonoBehaviour
     public ParticleSystem FrontWheelParticle;
     public ParticleSystem BackWheelParticle;
 
+    private float damageCooldown = 0;
+    private float cartDamageCooldown = 0;
+
+    public AudioSource[] minerDamage;
+
 
     // Start is called before the first frame update
     void Start()
     {
-
-
         rb = GetComponent<Rigidbody2D>();
         movement.Play();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKey(KeyCode.A))
         {
             isBreaking = true;
@@ -80,7 +81,6 @@ public class Minecart : MonoBehaviour
         }
 
 
-
         if (Input.GetButtonDown("Jump"))
         {
             Jump();
@@ -89,7 +89,6 @@ public class Minecart : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         if (!isBreaking)
         {
             if (rb.velocity.magnitude >= maxSpeed)
@@ -105,6 +104,16 @@ public class Minecart : MonoBehaviour
         if (rb.velocity.x > 1)
         {
             movement.UnPause();
+            transform.GetComponent<Animator>().Play("MinecartRolling");
+        }
+
+        if (damageCooldown > 0)
+        {
+            damageCooldown -= Time.deltaTime;
+        }
+        if (cartDamageCooldown > 0)
+        {
+            cartDamageCooldown -= Time.deltaTime;
         }
     }
 
@@ -115,91 +124,94 @@ public class Minecart : MonoBehaviour
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce)); // makes the minecart jump
             transform.GetComponent<Animator>().Play("MinecartJump");
             isJumping = true;
-
-
         }
         else
         {
-            
+
         }
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void TakeHealthDamage(int amount)
     {
-        if (collision.gameObject.CompareTag("Zombie"))        // Handles collisions of the enemies (Zombies, bats, etc.)
+        if (damageCooldown <= 0)
         {
-            Zombie zombie = collision.gameObject.GetComponent<Zombie>();
-
-
-            minecartHealthSlider.value -= 10;
-            minecartHealthUI.text = minecartHealthSlider.value + "/" + minecartHealthSlider.maxValue;
-
-            if (minecartHealthSlider.value <= 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
-            else if (zombie != null && rb.velocity.magnitude >= 5)
-            {
-                zombie.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
-                zombie.Death();  // calls the death method from the zombie script 
-                crash.Play();
-
-            }
-            else
-            {
-                healthSlider.value -= 5;
-                healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
-
-                Vector2 pushBackDirection = (transform.position - collision.transform.position).normalized;
-                rb.AddForce(pushBackDirection * 10, ForceMode2D.Impulse);   // Knockback when the cart hits the zombie at max speed
-            }
-        }
-
-        if (collision.gameObject.CompareTag("Hazard") || collision.gameObject.CompareTag("rock"))
-        {
-            crash.Play();
-            movement.Pause();
-
-            minecartHealthSlider.value -= 10;
-            minecartHealthUI.text = minecartHealthSlider.value + "/" + minecartHealthSlider.maxValue;
+            minerDamage[Random.Range(0, 3)].Play();
+            healthSlider.value -= amount;
+            healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
 
             if (healthSlider.value <= 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
 
-
+            damageCooldown = 1f;
         }
+    }
 
-        if(collision.gameObject.CompareTag("bat"))
+    public void TakeCartDamage(int amount)
+    {
+        if (cartDamageCooldown <= 0)
         {
-            Bat bat = collision.gameObject.GetComponent<Bat>();
-
-            minecartHealthSlider.value -= 10;
+            minecartHealthSlider.value -= amount;
             minecartHealthUI.text = minecartHealthSlider.value + "/" + minecartHealthSlider.maxValue;
 
             if (minecartHealthSlider.value <= 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Dying
             }
-            else if (bat != null && rb.velocity.magnitude >= 5)
-            {
 
+            cartDamageCooldown = 0.5f;
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Zombie")) // If player hits ZOMBIE
+        {
+            Zombie zombie = collision.gameObject.GetComponent<Zombie>();
+
+            TakeCartDamage(10);
+
+
+            if (zombie != null && rb.velocity.magnitude >= 5) //Hitting at max speed
+            {
+                zombie.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
+                zombie.Death();  // calls the death method from the zombie script 
+                crash.Play();
             }
             else
             {
-                healthSlider.value -= 5;
-                healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
+                TakeHealthDamage(5);
 
                 Vector2 pushBackDirection = (transform.position - collision.transform.position).normalized;
-                rb.AddForce(pushBackDirection * 10, ForceMode2D.Impulse);   // Knockback when the cart hits the zombie at max speed
+                rb.AddForce(pushBackDirection * 10, ForceMode2D.Impulse);   // Knockback when the cart hits the zombie
             }
+        }
+
+        if (collision.gameObject.CompareTag("Hazard") || collision.gameObject.CompareTag("rock")) // If player hits ROCK
+        {
+            crash.Play();
+            movement.Pause();
+            transform.GetComponent<Animator>().Play("MinecartStopped");
+
+            TakeCartDamage(10);
+        }
+
+        if (collision.gameObject.CompareTag("bat")) // If player hits BAT
+        {
+            Bat bat = collision.gameObject.GetComponent<Bat>();
+
+
+            TakeHealthDamage(5);
+
+            Vector2 pushBackDirection = (transform.position - collision.transform.position).normalized;
+            rb.AddForce(pushBackDirection * 10, ForceMode2D.Impulse);   // Knockback when the cart hits the bat
         }
 
         if (isJumping)
         {
-            if(collision.gameObject.CompareTag("track"))
+            if (collision.gameObject.CompareTag("track"))
             {
                 isJumping = false;
             }

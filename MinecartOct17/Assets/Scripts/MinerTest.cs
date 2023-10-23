@@ -9,10 +9,7 @@ public class MinerTest : MonoBehaviour
     private Animator animator;
     private bool isDucking;
     private Collider2D standingCollider;
-    public AudioSource[] minerDamage;
-
-    public TMP_Text healthUI;
-    public UnityEngine.UI.Slider healthSlider;
+    
 
     void Start()
     {
@@ -47,62 +44,8 @@ public class MinerTest : MonoBehaviour
                 animator.Play("Miner Rising");
                 isDucking = false;
                 standingCollider.enabled = true;
-
             }
         }
-
-        //if (Input.GetKeyDown(KeyCode.W)) // when player presses W, miner rises
-        //{
-        //    if (isDucking)
-        //    {
-        //        // Trigger the "RiseFromDuck" animation
-        //        animator.SetTrigger("Rising");
-        //        isDucking = false;
-        //        standingCollider.enabled = true;
-        //        
-        //    }
-        //}
-
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Zombie"))        // Handles collisions of the enemies (Zombies, bats, etc.)
-        {
-            healthSlider.value -= 10;
-            healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
-            minerDamage[Random.Range(0, minerDamage.Length)].Play();
-
-            if (healthSlider.value <= 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
-        }
-
-        if (collision.gameObject.CompareTag("Hazard"))
-        {
-            healthSlider.value -= 10;
-            healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
-            minerDamage[Random.Range(0, minerDamage.Length)].Play();
-
-            if (healthSlider.value <= 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //Handles collisions of the hazards.
-            }
-        }
-
-        if (collision.gameObject.CompareTag("bat"))
-        {
-            healthSlider.value -= 10;
-            healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
-            minerDamage[Random.Range(0, minerDamage.Length)].Play();
-           
-
-            if (healthSlider.value <= 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //Handles collisions of the hazards.
-            }
-        }
-
     }
 }
 

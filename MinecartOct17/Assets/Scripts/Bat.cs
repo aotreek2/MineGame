@@ -9,7 +9,9 @@ public class Bat : MonoBehaviour
     private float distance;
     public float speed;
     public float distanceBetween = 7;
+
     private int batHealth = 10;
+    public UnityEngine.UI.Slider batSlider;
 
     public Animator bat;
     private SpriteRenderer batSprite;
@@ -66,18 +68,15 @@ public class Bat : MonoBehaviour
     public void TakeDamage(int damage)
     {
         batHealth -= damage;
-        if (batDamage.Length > 0)
-        {
-            int randomIndex = Random.Range(1, batDamage.Length);
-            batDamage[randomIndex].Play();
-        }
-        else
-        {
-            Debug.Log("error, not working");
-        }
+        batSlider.gameObject.SetActive(true);
+        batSlider.value = batHealth;
+
+        transform.GetChild(1).transform.GetComponent<ParticleSystem>().Play();
+        batDamage[Random.Range(0, 3)].Play();
 
         if (batHealth <= 0)
         {
+            transform.GetChild(1).transform.parent = transform.parent.transform;
             Death();
         }
     }
@@ -85,5 +84,14 @@ public class Bat : MonoBehaviour
     public void Death()
     {
         Destroy(this.gameObject);
+    }
+
+    private void OnMouseDown()
+    {
+        print(distance);
+        if (pickaxeManager.active && distance <= 3)
+        {
+            pickaxeManager.SwingPickaxe(gameObject);
+        }
     }
 }

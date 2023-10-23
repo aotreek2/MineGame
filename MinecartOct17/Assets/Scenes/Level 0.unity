@@ -3711,6 +3711,14 @@ PrefabInstance:
       propertyPath: ammoUI
       value: 
       objectReference: {fileID: 916744197}
+    - target: {fileID: 7906727002237387880, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: healthUI
+      value: 
+      objectReference: {fileID: 238200735}
+    - target: {fileID: 7906727002237387880, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 1844318607}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

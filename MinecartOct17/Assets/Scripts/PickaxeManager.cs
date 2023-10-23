@@ -78,7 +78,6 @@ public class PickaxeManager : MonoBehaviour
             {
                 mining.pitch = Random.Range(1f, 1.8f);
                 mining.Play();
-                //minedObject.transform.parent.transform.GetChild(1).transform.GetComponent<ParticleSystem>().Play();
 
                 minedObject.GetComponent<Zombie>().TakeDamage(2);
             }
