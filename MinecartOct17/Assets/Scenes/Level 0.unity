@@ -3683,6 +3683,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2034878648242838311, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4b41d931d18fbe24f8647857827ec3aa, type: 2}
     - target: {fileID: 2465483799190553571, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: oreStats
       value: 

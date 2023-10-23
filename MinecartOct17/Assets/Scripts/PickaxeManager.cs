@@ -20,16 +20,18 @@ public class PickaxeManager : MonoBehaviour
 
 
     public bool active = false;
-    private bool isDucking;
     private Collider2D standingCollider;
+
+    private Switching switchScript;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //orePing = transform.GetChild(0).GetComponent<Animator>();
         animator = GetComponent<Animator>();
         standingCollider = GetComponent<Collider2D>();
+
+        switchScript = transform.parent.GetComponent<Switching>();
     }
 
     // Update is called once per frame
@@ -37,30 +39,32 @@ public class PickaxeManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            transform.GetComponent<Animator>().Play("PickaxeSwing");
+            if(switchScript.isDucking == false)
+            {
+                transform.GetComponent<Animator>().Play("PickaxeSwing");
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.S)) // when player presses S, miner ducks
         {
-            if (!isDucking)
+            if (!switchScript.isDucking)
             {
-                // Trigger the "Duck" animation
-                //animator.SetTrigger("Duck");
                 animator.Play("axeduck");
-                isDucking = true;
+                switchScript.isDucking = true;
                 standingCollider.enabled = false;
 
+                active = false;
             }
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
-            if (isDucking)
+            if (switchScript.isDucking)
             {
-                // Trigger the "RiseFromDuck" animation
-                //animator.SetTrigger("Rising");
                 animator.Play("axerising");
-                isDucking = false;
+                switchScript.isDucking = false;
                 standingCollider.enabled = true;
+
+                active = true;
             }
         }
     }

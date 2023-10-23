@@ -10315,6 +10315,7 @@ GameObject:
   - component: {fileID: 7391629660017565740}
   - component: {fileID: 7952513310862421306}
   - component: {fileID: 2034878648242838311}
+  - component: {fileID: 1947504239210417470}
   m_Layer: 0
   m_Name: MinerGun
   m_TagString: Player
@@ -10456,6 +10457,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1947504239210417470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223484565187381120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12e466d1a58f03409799f3a5a91f677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5039364826617701165
 GameObject:
   m_ObjectHideFlags: 0
@@ -10921,6 +10934,7 @@ MonoBehaviour:
   - {fileID: 6301237923690119988}
   - {fileID: 2169586299303643624}
   - {fileID: 3223484565187381120}
+  isDucking: 0
 --- !u!95 &6319117702418093999
 Animator:
   serializedVersion: 5

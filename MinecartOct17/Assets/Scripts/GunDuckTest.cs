@@ -6,12 +6,15 @@ public class GunDuckTest : MonoBehaviour
 {
     private Animator animator;
     private Collider2D standingCollider;
-    private bool isDucking;
+
+    private Switching switchScript;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         standingCollider = GetComponent<Collider2D>();
+
+        switchScript = transform.parent.GetComponent<Switching>();
     }
 
     // Update is called once per frame
@@ -19,29 +22,23 @@ public class GunDuckTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S)) // when player presses S, miner ducks
         {
-            if (!isDucking)
+            if (!switchScript.isDucking)
             {
-                // Trigger the "Duck" animation
-                //animator.SetTrigger("Duck");
                 animator.Play("gunduck");
                 transform.GetChild(0).gameObject.SetActive(false);
-                isDucking = true;
+                switchScript.isDucking = true;
                 standingCollider.enabled = false;
-
             }
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
-            if (isDucking)
+            if (switchScript.isDucking)
             {
-                // Trigger the "RiseFromDuck" animation
-                //animator.SetTrigger("Rising");
                 transform.GetChild(0).gameObject.SetActive(false);
                 animator.Play("gunrising");
-                isDucking = false;
+                switchScript.isDucking = false;
                 standingCollider.enabled = true;           
-                StartCoroutine("WaitforRising");      
-
+                //StartCoroutine("WaitforRising");      
             }
         }
     }
@@ -54,6 +51,11 @@ public class GunDuckTest : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(true); // when S is released, the arm waits until the miners body is back before being active again.
 
         }
+    }
+
+    public void ArmAppear()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 
 }

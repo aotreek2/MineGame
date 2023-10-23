@@ -7,17 +7,17 @@ using TMPro;
 public class MinerTest : MonoBehaviour
 {
     private Animator animator;
-    private bool isDucking;
     private Collider2D standingCollider;
+
+    private Switching switchScript;
     
 
     void Start()
     {
         animator = GetComponent<Animator>();
         standingCollider = GetComponent<Collider2D>();
-        
-        //healthMinerUI.text = "Health: " + health;
 
+        switchScript = transform.parent.GetComponent<Switching>();
     }
 
     // Update is called once per frame
@@ -25,24 +25,19 @@ public class MinerTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S)) // when player presses S, miner ducks
         {
-            if (!isDucking)
+            if (!switchScript.isDucking)
             {
-                // Trigger the "Duck" animation
-                //animator.SetTrigger("Duck");
                 animator.Play("Miner Ducking");
-                isDucking = true;
+                switchScript.isDucking = true;
                 standingCollider.enabled = false;
-                
             }
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
-            if (isDucking)
+            if (switchScript.isDucking)
             {
-                // Trigger the "RiseFromDuck" animation
-                //animator.SetTrigger("Rising");
                 animator.Play("Miner Rising");
-                isDucking = false;
+                switchScript.isDucking = false;
                 standingCollider.enabled = true;
             }
         }
