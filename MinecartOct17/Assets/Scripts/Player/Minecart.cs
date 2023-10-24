@@ -63,9 +63,9 @@ public class Minecart : MonoBehaviour
         {
             isBreaking = true;
             movement.Pause();
-            if (rb.velocity.x > 1.3)
+            if (rb.velocity.x > 0.5)
             {
-                rb.AddForce(Vector2.left * brakeForce);
+                //rb.AddForce(Vector2.left * brakeForce);
                 if (!BackWheelParticle.isEmitting && !isJumping)
                 {
                     BackWheelParticle.Play();
@@ -108,6 +108,14 @@ public class Minecart : MonoBehaviour
             else
             {
                 rb.AddForce(Vector2.right * fowardSpeed, ForceMode2D.Impulse);
+            }
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            if (rb.velocity.x > 0.5)
+            {
+                rb.AddForce(Vector2.left * brakeForce);
             }
         }
 

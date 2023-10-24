@@ -11385,7 +11385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fowardSpeed: 0.8
   maxSpeed: 10
-  brakeForce: 8
+  brakeForce: 45
   jumpForce: 1300
   crash: {fileID: 4683386863129069469}
   movement: {fileID: 8614239457428297567}

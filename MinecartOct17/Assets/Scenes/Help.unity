@@ -425,8 +425,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 435.63, y: -90.7}
-  m_SizeDelta: {x: 706.1782, y: 79.6412}
+  m_AnchoredPosition: {x: 412.6196, y: -95.8}
+  m_SizeDelta: {x: 752.199, y: 79.6412}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &106149682
 MonoBehaviour:
@@ -448,10 +448,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[1]: Torch, [2]: Pickaxe, [3]: Gun, [Left Mouse]: Interact,
-
-    [Spacebar]:
-    Jump, [Hold A]: Slow Down, [Hold S]: Duck
+  m_text: '[1]: Torch, [2]: Pickaxe, [3]: Gun, [4]: Machine Gun (If Unlocked), [Left
+    Mouse]: Interact, [Spacebar]: Jump, [Hold A]: Slow Down, [Hold S]: Duck
 
 '
   m_isRightToLeft: 0
@@ -480,8 +478,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 11
+  m_fontSizeBase: 11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

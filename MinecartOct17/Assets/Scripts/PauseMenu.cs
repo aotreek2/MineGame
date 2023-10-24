@@ -37,7 +37,6 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
         MultiSceneScores.totalHealth = 25;
         MultiSceneScores.totalMinecartHealth = 75;
         MultiSceneScores.gold = 0;
@@ -47,5 +46,6 @@ public class PauseMenu : MonoBehaviour
         MultiSceneScores.ammoTwo = 0;
         MultiSceneScores.currentLevel = 0;
         MultiSceneScores.machineGunUnlocked = false;
+        SceneManager.LoadScene("MainMenu");
     }
 }
