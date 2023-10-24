@@ -17040,6 +17040,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3cc875a40883d64fa9ea84380caffb6, type: 3}
+--- !u!1 &1592608867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1666005336050615477, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+  m_PrefabInstance: {fileID: 5932762652702813514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1627052566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29123,6 +29128,14 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4075644191775762867, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: PlayerState.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075644191775762867, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: PlayerState.Array.data[3]
+      value: 
+      objectReference: {fileID: 1592608867}
     - target: {fileID: 4567181570336668244, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -29151,6 +29164,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Minecart
       objectReference: {fileID: 0}
+    - target: {fileID: 6662306870737834513, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: shooting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662306870737834513, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: bullletPrefab
+      value: 
+      objectReference: {fileID: 5648568479308573059, guid: 0a2c9055e149f8a4091550d332c26683, type: 3}
     - target: {fileID: 6993577848389854060, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
       propertyPath: ammoUI
       value: 
@@ -29187,6 +29208,10 @@ PrefabInstance:
       propertyPath: minerDamage.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8237613651208703869, guid: 18fad21479218fa4c92cf9d72d0ba5f1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4b41d931d18fbe24f8647857827ec3aa, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

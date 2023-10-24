@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float speed = 30f;
+    public float speed = 0f;
     public Rigidbody2D rb;
-    private int damage = 4;
+    public int damage = 0;
 
     private float lifetime = 0f;
 
