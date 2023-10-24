@@ -172,7 +172,7 @@ public class Minecart : MonoBehaviour
             minecartHealthUI.text = minecartHealthSlider.value + "/" + minecartHealthSlider.maxValue;
 
             MultiSceneScores.totalMinecartHealth = (int)minecartHealthSlider.value;
-            cartDamageCooldown = 0.5f;
+            cartDamageCooldown = 0.3f;
 
             if (minecartHealthSlider.value <= 0)
             {
@@ -243,6 +243,10 @@ public class Minecart : MonoBehaviour
             transform.GetComponent<Animator>().Play("MinecartStopped");
 
             transform.GetChild(2).transform.GetChild(0).GetComponent<PlayerAimWeapon>().GainAmmo();
+            if(MultiSceneScores.machineGunUnlocked)
+            {
+                transform.GetChild(3).transform.GetChild(0).GetComponent<PlayerAimMachineGun>().GainAmmo();
+            }
 
             Destroy(collision.gameObject);
         }

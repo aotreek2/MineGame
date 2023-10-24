@@ -57,8 +57,6 @@ public class MineableObject : MonoBehaviour
     //Someone clicked the object.
     private void OnMouseDown()
     {
-        print(Mathf.Abs(transform.parent.transform.position.x - pickaxeManager.transform.position.x));
-
         if (pickaxeManager.active && (Mathf.Abs(transform.parent.transform.position.x - pickaxeManager.transform.position.x) <= 2.5))
         {
             pickaxeManager.SwingPickaxe(gameObject);

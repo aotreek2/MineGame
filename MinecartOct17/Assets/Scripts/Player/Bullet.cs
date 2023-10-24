@@ -43,7 +43,7 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        lifetime += Time.deltaTime;
+        lifetime -= Time.deltaTime;
         if (lifetime >= 7)
         {
             Destroy(this.gameObject);

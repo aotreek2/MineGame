@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class MuzzleFlare : MonoBehaviour
 {
-
+    public bool machineGun = false;
     public PlayerAimWeapon gunScript;
+    public PlayerAimMachineGun gunScript2;
 
 
     // Start is called before the first frame update
@@ -24,8 +25,15 @@ public class MuzzleFlare : MonoBehaviour
 
     public void MuzzleFlareFade()
     {
-        gunScript.shooting = false;
-        gameObject.SetActive(false);
+        if (machineGun)
+        {
+            gunScript2.shooting = false;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gunScript.shooting = false;
+            gameObject.SetActive(false);
+        }
     }
-
 }

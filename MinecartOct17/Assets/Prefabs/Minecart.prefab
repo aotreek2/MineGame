@@ -129,7 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235fa80889a11234188ec756ad34810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machineGun: 0
   gunScript: {fileID: 6993577848389854060}
+  gunScript2: {fileID: 0}
 --- !u!1 &497598453686069963
 GameObject:
   m_ObjectHideFlags: 0
@@ -9948,7 +9950,7 @@ GameObject:
   - component: {fileID: 8711790615456058029}
   - component: {fileID: 2980214018796930191}
   - component: {fileID: 8237613651208703869}
-  - component: {fileID: 7124334245127535447}
+  - component: {fileID: 4897387540618569813}
   m_Layer: 0
   m_Name: MinerMachineGun
   m_TagString: Player
@@ -10090,7 +10092,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7124334245127535447
+--- !u!114 &4897387540618569813
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10099,7 +10101,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1666005336050615477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e12e466d1a58f03409799f3a5a91f677, type: 3}
+  m_Script: {fileID: 11500000, guid: 10aef2747b125764fb970399f13f492b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1754530498071491488
@@ -10111,9 +10113,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4191630224183463402}
-  - component: {fileID: 6662306870737834513}
   - component: {fileID: 720046819724755532}
   - component: {fileID: 683837198943029483}
+  - component: {fileID: 371349265441675569}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -10137,27 +10139,6 @@ Transform:
   - {fileID: 863329291771153710}
   m_Father: {fileID: 7594163160192462269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6662306870737834513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1754530498071491488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d2671918db9748b371faa94d155b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunAnimation: {fileID: 7501585097675436474}
-  bullletPrefab: {fileID: 7601316217604011029, guid: 9f0925da9331d904a87193c1f8ad6191, type: 3}
-  shooting: 0
-  ammoUI: {fileID: 0}
-  maxAmmo: 8
-  magazineAmmo: 8
-  reservedAmmo: 16
-  gunFire: {fileID: 720046819724755532}
-  reload: {fileID: 683837198943029483}
 --- !u!82 &720046819724755532
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10350,6 +10331,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &371349265441675569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754530498071491488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c72286aef8471348a33d0eb7eb44cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunAnimation: {fileID: 7501585097675436474}
+  bullletPrefab: {fileID: 5648568479308573059, guid: 0a2c9055e149f8a4091550d332c26683, type: 3}
+  shooting: 0
+  reloading: 0
+  machineGunAmmoUI: {fileID: 0}
+  maxAmmo: 30
+  magazineAmmo: 0
+  reservedAmmo: 0
+  reloadTime: 0
+  gunFire: {fileID: 720046819724755532}
+  reload: {fileID: 683837198943029483}
 --- !u!1 &2169586299303643624
 GameObject:
   m_ObjectHideFlags: 0
@@ -12276,7 +12280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235fa80889a11234188ec756ad34810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunScript: {fileID: 6662306870737834513}
+  machineGun: 0
+  gunScript: {fileID: 0}
+  gunScript2: {fileID: 0}
 --- !u!1 &7950730074575933877
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,25 +4,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerAimWeapon : MonoBehaviour
+public class PlayerAimMachineGun : MonoBehaviour
 {
     public GameObject gunAnimation;
     public GameObject bullletPrefab;
 
     public bool shooting = false;
     public bool reloading = false;
-   
-    public TMP_Text ammoUI;
-    public int maxAmmo = 8;
+
+    public TMP_Text machineGunAmmoUI;
+    public int maxAmmo = 30;
     public int magazineAmmo = 0;
-    public int reservedAmmo = 36;
+    public int reservedAmmo = 0;
 
     public float reloadTime = 0f;
 
     public AudioSource gunFire;
     public AudioSource reload;
 
-   
+
 
     public event EventHandler<onShootEventArgs> onShoot;
     public class onShootEventArgs : EventArgs
@@ -37,16 +37,17 @@ public class PlayerAimWeapon : MonoBehaviour
     private Transform aimBulletPositionTransform;
 
 
-    
+
 
     private void Awake()
     {
         aimTransform = transform.Find("Aim").transform.GetChild(0);
         aimGunEndPointTransform = aimTransform.Find("GunEndPointPosition");
 
-        reservedAmmo = MultiSceneScores.ammo;
+        reservedAmmo = MultiSceneScores.ammoTwo;
         Reload();
         reloadTime = 0;
+        transform.parent.transform.parent.GetChild(2).transform.GetChild(0).GetComponent<PlayerAimWeapon>().UpdateAmmo();
     }
 
     private void Update()
@@ -56,7 +57,7 @@ public class PlayerAimWeapon : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (magazineAmmo < 8)
+            if (magazineAmmo < maxAmmo)
             {
                 Reload();
             }
@@ -87,12 +88,12 @@ public class PlayerAimWeapon : MonoBehaviour
 
     private void handleShooting()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             if (!shooting && !reloading)
             {
                 // Checks if the magazine has bullets in it.
-                if(magazineAmmo>0)
+                if (magazineAmmo > 0)
                 {
                     magazineAmmo--;
                     shooting = true;
@@ -117,7 +118,7 @@ public class PlayerAimWeapon : MonoBehaviour
 
                     UpdateAmmo();
                 }
-                else if(magazineAmmo <= 0) // If there are no bullets in the magazine, this happens.
+                else if (magazineAmmo <= 0) // If there are no bullets in the magazine, this happens.
                 {
                     Reload();
                 }
@@ -127,20 +128,20 @@ public class PlayerAimWeapon : MonoBehaviour
 
     public void Reload()
     {
-        if (reservedAmmo >= 8) // If there is at least a full magazine of ammo in the reserve, it reloads that.
+        if (reservedAmmo >= 30) // If there is at least a full magazine of ammo in the reserve, it reloads that.
         {
             reload.Play();
-            reservedAmmo -= (maxAmmo-magazineAmmo);
-            magazineAmmo += (maxAmmo-magazineAmmo);
+            reservedAmmo -= (maxAmmo - magazineAmmo);
+            magazineAmmo += (maxAmmo - magazineAmmo);
             reloading = true;
-            reloadTime = 1f;
+            reloadTime = 1.5f;
         }
         else if (reservedAmmo > 0) // If there is less than a full magazine but at least some in the reserve, whatever is left is loaded.
         {
             reload.Play();
-            if (reservedAmmo >= (maxAmmo-magazineAmmo))
+            if (reservedAmmo >= (maxAmmo - magazineAmmo))
             {
-                reservedAmmo -= (maxAmmo-magazineAmmo);
+                reservedAmmo -= (maxAmmo - magazineAmmo);
                 magazineAmmo = maxAmmo;
             }
             else
@@ -149,7 +150,7 @@ public class PlayerAimWeapon : MonoBehaviour
                 reservedAmmo = 0;
             }
             reloading = true;
-            reloadTime = 1f;
+            reloadTime = 1.5f;
         }
         else
         {
@@ -161,13 +162,13 @@ public class PlayerAimWeapon : MonoBehaviour
 
     public void UpdateAmmo()
     {
-        ammoUI.text = "[" + magazineAmmo + "/" + maxAmmo + "]-[" + reservedAmmo + "]";
-        MultiSceneScores.ammo = magazineAmmo + reservedAmmo;
+        machineGunAmmoUI.text = "[" + magazineAmmo + "/" + maxAmmo + "]-[" + reservedAmmo + "]";
+        MultiSceneScores.ammoTwo = magazineAmmo + reservedAmmo;
     }
 
     public void GainAmmo()
     {
-        reservedAmmo += UnityEngine.Random.Range(8, 24);
+        reservedAmmo += UnityEngine.Random.Range(10, 30);
         UpdateAmmo();
     }
 
