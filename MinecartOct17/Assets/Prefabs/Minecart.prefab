@@ -10739,7 +10739,7 @@ GameObject:
   - component: {fileID: 4567181570336668244}
   m_Layer: 0
   m_Name: Minecart
-  m_TagString: Untagged
+  m_TagString: Minecart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

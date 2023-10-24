@@ -24,6 +24,14 @@ public class PickaxeManager : MonoBehaviour
 
     private Switching switchScript;
 
+    public void Awake()
+    {
+        //Sets up the UI when scene loads
+        gold = MultiSceneScores.gold;
+        invine = MultiSceneScores.invine;
+        diamond = MultiSceneScores.diamond;
+        UpdateOres();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -133,5 +141,8 @@ public class PickaxeManager : MonoBehaviour
     public void UpdateOres()
     {
         oreStats.text = $"Gold: {gold} / Invine: {invine} / Diamond: {diamond}";
+        MultiSceneScores.gold = gold;
+        MultiSceneScores.invine = invine;
+        MultiSceneScores.diamond = diamond;
     }
 }

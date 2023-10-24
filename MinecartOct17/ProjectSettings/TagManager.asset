@@ -13,6 +13,8 @@ TagManager:
   - CeilingHazard
   - diamondOre
   - ammoBox
+  - bat
+  - Minecart
   layers:
   - Default
   - TransparentFX

@@ -44,6 +44,15 @@ public class Minecart : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         movement.Play();
+
+        // Sets their health to the starting value.
+        healthSlider.value = MultiSceneScores.totalHealth;
+        healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
+        minecartHealthSlider.value = MultiSceneScores.totalMinecartHealth;
+        minecartHealthUI.text = minecartHealthSlider.value + "/" + minecartHealthSlider.maxValue;
+
+        transform.GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(2).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -104,7 +113,11 @@ public class Minecart : MonoBehaviour
         if (rb.velocity.x > 1)
         {
             movement.UnPause();
-            transform.GetComponent<Animator>().Play("MinecartRolling");
+            if (!isJumping)
+            {
+                transform.GetComponent<Animator>().Play("MinecartRolling");
+            }
+            
         }
 
         if (damageCooldown > 0)
@@ -144,6 +157,7 @@ public class Minecart : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
 
+            MultiSceneScores.totalHealth = (int) healthSlider.value;
             damageCooldown = 1f;
         }
     }
@@ -160,6 +174,7 @@ public class Minecart : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Dying
             }
 
+            MultiSceneScores.totalMinecartHealth = (int)minecartHealthSlider.value;
             cartDamageCooldown = 0.5f;
         }
     }

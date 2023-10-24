@@ -9,7 +9,10 @@ public class TutorialTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        previousPanel.SetActive(false);
-        triggeredPanel.SetActive(true);
+        if (collision.gameObject.tag == "Minecart")
+        {
+            previousPanel.SetActive(false);
+            triggeredPanel.SetActive(true);
+        }
     }
 }

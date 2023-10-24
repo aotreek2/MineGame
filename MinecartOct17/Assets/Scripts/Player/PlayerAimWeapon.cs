@@ -13,7 +13,7 @@ public class PlayerAimWeapon : MonoBehaviour
    
     public TMP_Text ammoUI;
     public int maxAmmo = 8;
-    public int magazineAmmo = 8;
+    public int magazineAmmo = 0;
     public int reservedAmmo = 36;
 
     public AudioSource gunFire;
@@ -41,9 +41,8 @@ public class PlayerAimWeapon : MonoBehaviour
         aimTransform = transform.Find("Aim").transform.GetChild(0);
         aimGunEndPointTransform = aimTransform.Find("GunEndPointPosition");
 
-        UpdateAmmo();
-        
-       
+        reservedAmmo = MultiSceneScores.ammo;
+        Reload();
     }
 
     private void Update()
@@ -58,9 +57,6 @@ public class PlayerAimWeapon : MonoBehaviour
                 Reload();
             }
         }
-
-
-
     }
 
 
@@ -109,9 +105,6 @@ public class PlayerAimWeapon : MonoBehaviour
                 {
                     Reload();
                 }
-
-                
-                
             }
         }
     }
@@ -149,6 +142,7 @@ public class PlayerAimWeapon : MonoBehaviour
     public void UpdateAmmo()
     {
         ammoUI.text = "[" + magazineAmmo + "/" + maxAmmo + "]-[" + reservedAmmo + "]";
+        MultiSceneScores.ammo = magazineAmmo + reservedAmmo;
     }
 
 
