@@ -9,45 +9,50 @@ public class UIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MultiSceneScores.currentLevel = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+           
+        }
     }
 
-    public void QuitButton()
+    public void OnClickQuitButton()
     {
         Debug.Log("Quit button was clicked");
         Application.Quit();
     }
 
-    public void HelpButton()
+    public void OnHelpButtonClick()
     {
         SceneManager.LoadScene("Help");
     }
 
-    public void LevelSelection()
+    public void LevelSelectButtonClick()
     {
         SceneManager.LoadScene("Level Select");
     }
 
-    public void TutorialLevel()
-    {
-        SceneManager.LoadScene("Level 0");
-    }
-
-    public void LevelOne()
+    public void StartButtonClick()
     {
         SceneManager.LoadScene("Level 1");
     }
 
-    public void BackButton()
+    public void BackButtonClick()
 
     {
         SceneManager.LoadScene("MainMenu");
 
     }
+
+    
+
+
+
 }
