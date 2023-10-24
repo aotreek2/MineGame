@@ -63,7 +63,7 @@ public class Minecart : MonoBehaviour
         {
             isBreaking = true;
             movement.Pause();
-            if (rb.velocity.x > 2)
+            if (rb.velocity.x > 1.3)
             {
                 rb.AddForce(Vector2.left * brakeForce);
                 if (!BackWheelParticle.isEmitting && !isJumping)

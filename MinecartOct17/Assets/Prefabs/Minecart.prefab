@@ -10968,10 +10968,12 @@ MonoBehaviour:
   gunAnimation: {fileID: 50374491106370660}
   bullletPrefab: {fileID: 7601316217604011029, guid: 9f0925da9331d904a87193c1f8ad6191, type: 3}
   shooting: 0
+  reloading: 0
   ammoUI: {fileID: 0}
   maxAmmo: 8
   magazineAmmo: 8
   reservedAmmo: 16
+  reloadTime: 0
   gunFire: {fileID: 8305218393020324260}
   reload: {fileID: 572965739463236145}
 --- !u!82 &8305218393020324260
