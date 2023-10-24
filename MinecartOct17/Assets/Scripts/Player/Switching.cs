@@ -6,6 +6,10 @@ public class Switching : MonoBehaviour
 {
 
     public GameObject[] PlayerState;
+    public Animator torch;
+    public Animator pick;
+    public Animator gun;
+    public Animator machineGun;
 
     public bool isDucking = false;
 
@@ -14,18 +18,21 @@ public class Switching : MonoBehaviour
     void Start()
     {
         // Torch by default
+
         PlayerState[0].SetActive(true);
         PlayerState[1].SetActive(false);
         PlayerState[2].SetActive(false);
+        //PlayerState[3].SetActive(false);
+
+        torch = PlayerState[0].GetComponent<Animator>();
+        pick = PlayerState[1].GetComponent<Animator>();
+        gun = PlayerState[2].GetComponent<Animator>();
+        //machineGun = PlayerState[3].GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Animator torch = PlayerState[0].GetComponent<Animator>();
-        Animator pick = PlayerState[1].GetComponent<Animator>();
-        Animator gun = PlayerState[2].GetComponent<Animator>();
-
         // Switching
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -37,11 +44,16 @@ public class Switching : MonoBehaviour
             {
                 gun.Play("Idle");
             }
+            //else if (!machineGun.GetCurrentAnimatorStateInfo(0).IsName("MachineGunIdle"))
+            //{
+            //    machineGun.Play("MachineGunIdle");
+            //}
 
             PlayerState[0].SetActive(true);
             PlayerState[1].SetActive(false);
             PlayerState[1].GetComponent<PickaxeManager>().active = false;
             PlayerState[2].SetActive(false);
+            //PlayerState[3].SetActive(false);
 
             if (isDucking)
             {
@@ -49,7 +61,9 @@ public class Switching : MonoBehaviour
                 PlayerState[0].GetComponent<Collider2D>().enabled = false;
                 PlayerState[1].GetComponent<Collider2D>().enabled = true;
                 PlayerState[2].GetComponent<Collider2D>().enabled = true;
+                //PlayerState[3].GetComponent<Collider2D>().enabled = true;
                 PlayerState[2].transform.GetChild(0).gameObject.SetActive(true);
+                //PlayerState[3].transform.GetChild(0).gameObject.SetActive(true);
             }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -62,10 +76,15 @@ public class Switching : MonoBehaviour
             {
                 gun.Play("Idle");
             }
+            //else if (!machineGun.GetCurrentAnimatorStateInfo(0).IsName("MachineGunIdle"))
+            //{
+            //    machineGun.Play("MachineGunIdle");
+            //}
 
             PlayerState[0].SetActive(false);
             PlayerState[1].SetActive(true);
             PlayerState[2].SetActive(false);
+            //PlayerState[3].SetActive(false);
 
             if (isDucking)
             {
@@ -73,7 +92,9 @@ public class Switching : MonoBehaviour
                 PlayerState[0].GetComponent<Collider2D>().enabled = true;
                 PlayerState[1].GetComponent<Collider2D>().enabled = false;
                 PlayerState[2].GetComponent<Collider2D>().enabled = true;
+                //PlayerState[3].GetComponent<Collider2D>().enabled = true;
                 PlayerState[2].transform.GetChild(0).gameObject.SetActive(true);
+                //PlayerState[3].transform.GetChild(0).gameObject.SetActive(true);
             }
             else
             {
@@ -91,11 +112,16 @@ public class Switching : MonoBehaviour
             {
                 torch.Play("Miner Idle");
             }
+            //else if (!machineGun.GetCurrentAnimatorStateInfo(0).IsName("MachineGunIdle"))
+            //{
+            //    machineGun.Play("MachineGunIdle");
+            //}
 
             PlayerState[0].SetActive(false);
             PlayerState[1].SetActive(false);
             PlayerState[1].GetComponent<PickaxeManager>().active = false;
             PlayerState[2].SetActive(true);
+            //PlayerState[3].SetActive(false);
 
             if (isDucking)
             {
@@ -103,7 +129,41 @@ public class Switching : MonoBehaviour
                 PlayerState[0].GetComponent<Collider2D>().enabled = true;
                 PlayerState[1].GetComponent<Collider2D>().enabled = true;
                 PlayerState[2].GetComponent<Collider2D>().enabled = false;
+                //PlayerState[3].GetComponent<Collider2D>().enabled = true;
                 PlayerState[2].transform.GetChild(0).gameObject.SetActive(false);
+                //PlayerState[3].transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4) && MultiSceneScores.machineGunUnlocked == true)
+        {
+            if (!pick.GetCurrentAnimatorStateInfo(0).IsName("PickaxeStill"))
+            {
+                pick.Play("PickaxeStill");
+            }
+            else if (!torch.GetCurrentAnimatorStateInfo(0).IsName("Miner Idle"))
+            {
+                torch.Play("Miner Idle");
+            }
+            //else if (!gun.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            //{
+            //    gun.Play("Idle");
+            //}
+
+            PlayerState[0].SetActive(false);
+            PlayerState[1].SetActive(false);
+            PlayerState[1].GetComponent<PickaxeManager>().active = false;
+            PlayerState[2].SetActive(false);
+            //PlayerState[3].SetActive(true);
+
+            if (isDucking)
+            {
+                machineGun.Play("MachineGunDuckingStationary");
+                PlayerState[0].GetComponent<Collider2D>().enabled = true;
+                PlayerState[1].GetComponent<Collider2D>().enabled = true;
+                PlayerState[2].GetComponent<Collider2D>().enabled = true;
+                //PlayerState[3].GetComponent<Collider2D>().enabled = false;
+                PlayerState[2].transform.GetChild(0).gameObject.SetActive(true);
+                //PlayerState[3].transform.GetChild(0).gameObject.SetActive(false);
             }
         }
     }

@@ -10,6 +10,7 @@ public class PlayerAimWeapon : MonoBehaviour
     public GameObject bullletPrefab;
 
     public bool shooting = false;
+    public bool isMachineGun = false;
    
     public TMP_Text ammoUI;
     public int maxAmmo = 8;
