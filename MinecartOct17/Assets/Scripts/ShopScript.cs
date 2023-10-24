@@ -28,7 +28,7 @@ public class ShopScript : MonoBehaviour
     public void UpdateText()
     {
         oreStats.text = $"Gold:{MultiSceneScores.gold}\r\nInvine:{MultiSceneScores.invine}\r\nDiamond:{MultiSceneScores.diamond}";
-        healthStats.text = $"HP:{MultiSceneScores.totalHealth}/25\r\nCart HP:{MultiSceneScores.totalMinecartHealth}/75\r\nAmmo:{MultiSceneScores.ammo}";
+        healthStats.text = $"HP:{MultiSceneScores.totalHealth}/25\r\nCart HP:{MultiSceneScores.totalMinecartHealth}/75\r\nPistol Ammo:{MultiSceneScores.ammo}\r\nSTG-44 Ammo:{MultiSceneScores.ammoTwo}";
     }
 
     public void HealPlayer()
@@ -75,12 +75,35 @@ public class ShopScript : MonoBehaviour
         UpdateText();
     }
 
-    public void Ammo()
+    public void Ammo(int type)
     {
-        if (MultiSceneScores.gold >= 10)
+        if (type == 0)
         {
-            MultiSceneScores.gold -= 10;
-            MultiSceneScores.ammo += 8;
+            if (MultiSceneScores.gold >= 5)
+            {
+                MultiSceneScores.gold -= 5;
+                MultiSceneScores.ammo += 8;
+            }
+        }
+        else
+        {
+            if (MultiSceneScores.gold >= 10 && MultiSceneScores.invine >= 5)
+            {
+                MultiSceneScores.gold -= 10;
+                MultiSceneScores.invine -= 5;
+                MultiSceneScores.ammoTwo += 30;
+            }
+        }
+        UpdateText();
+    }
+
+    public void MachineGunUnlock()
+    {
+        if (MultiSceneScores.gold >= 20 && MultiSceneScores.diamond >= 1 && MultiSceneScores.machineGunUnlocked == false)
+        {
+            MultiSceneScores.gold -= 20;
+            MultiSceneScores.diamond -= 1;
+            MultiSceneScores.machineGunUnlocked = true;
         }
         UpdateText();
     }

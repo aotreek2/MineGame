@@ -296,7 +296,9 @@ MonoBehaviour:
 
     Cart HP:
 
-    Ammo:'
+    Pistol Ammo:
+
+    STG-44 Ammo:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 279eaa51d1a2ef2499e9d38b1957a469, type: 2}
   m_sharedMaterial: {fileID: 7667852406409971431, guid: 279eaa51d1a2ef2499e9d38b1957a469, type: 2}
@@ -433,7 +435,7 @@ MonoBehaviour:
   m_text: 'PISTOL AMMO (8)
 
 
-    10 GOLD'
+    5 GOLD'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 279eaa51d1a2ef2499e9d38b1957a469, type: 2}
   m_sharedMaterial: {fileID: 7667852406409971431, guid: 279eaa51d1a2ef2499e9d38b1957a469, type: 2}
@@ -761,7 +763,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1389657674}
         m_TargetAssemblyTypeName: ShopScript, Assembly-CSharp
         m_MethodName: Ammo
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -868,7 +870,7 @@ MonoBehaviour:
   m_text: 'STG-44 AMMO (30)
 
 
-    30 GOLD'
+    10 GOLD, 5 INVINE'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 279eaa51d1a2ef2499e9d38b1957a469, type: 2}
   m_sharedMaterial: {fileID: 7667852406409971431, guid: 279eaa51d1a2ef2499e9d38b1957a469, type: 2}
@@ -1005,7 +1007,7 @@ MonoBehaviour:
   m_text: 'UNLOCK STG-44
 
 
-    35 GOLD, 1 DIAMOND'
+    20 GOLD, 1 DIAMOND'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 279eaa51d1a2ef2499e9d38b1957a469, type: 2}
   m_sharedMaterial: {fileID: 7667852406409971431, guid: 279eaa51d1a2ef2499e9d38b1957a469, type: 2}
@@ -1318,7 +1320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13.1, y: 181.3}
+  m_AnchoredPosition: {x: 1, y: 179.7}
   m_SizeDelta: {x: -477.8442, y: -477.5527}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &871244445
@@ -2697,7 +2699,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1692222797}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1389657674}
+        m_TargetAssemblyTypeName: ShopScript, Assembly-CSharp
+        m_MethodName: MachineGunUnlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1692222797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3011,7 +3025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.9999084, y: 185}
+  m_AnchoredPosition: {x: 6.1000977, y: 183.40001}
   m_SizeDelta: {x: -477.8442, y: -477.5527}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1899805427
@@ -3209,7 +3223,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1978649463}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1389657674}
+        m_TargetAssemblyTypeName: ShopScript, Assembly-CSharp
+        m_MethodName: Ammo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1978649463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3266,7 +3292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2146201142
 RectTransform:
   m_ObjectHideFlags: 0

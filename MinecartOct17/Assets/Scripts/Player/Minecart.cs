@@ -36,6 +36,8 @@ public class Minecart : MonoBehaviour
 
     public AudioSource[] minerDamage;
 
+    public MultiSceneScores multiSceneScores;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +53,7 @@ public class Minecart : MonoBehaviour
 
         transform.GetChild(1).gameObject.SetActive(false);
         transform.GetChild(2).gameObject.SetActive(false);
+        transform.GetChild(3).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -150,13 +153,14 @@ public class Minecart : MonoBehaviour
             healthSlider.value -= amount;
             healthUI.text = healthSlider.value + "/" + healthSlider.maxValue;
 
+            MultiSceneScores.totalHealth = (int)healthSlider.value;
+            damageCooldown = 1f;
+
             if (healthSlider.value <= 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                multiSceneScores.ResetStats();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Dying
             }
-
-            MultiSceneScores.totalHealth = (int) healthSlider.value;
-            damageCooldown = 1f;
         }
     }
 
@@ -167,13 +171,15 @@ public class Minecart : MonoBehaviour
             minecartHealthSlider.value -= amount;
             minecartHealthUI.text = minecartHealthSlider.value + "/" + minecartHealthSlider.maxValue;
 
-            if (minecartHealthSlider.value <= 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Dying
-            }
-
             MultiSceneScores.totalMinecartHealth = (int)minecartHealthSlider.value;
             cartDamageCooldown = 0.5f;
+
+            if (minecartHealthSlider.value <= 0)
+            {
+                multiSceneScores.ResetStats();
+                print(MultiSceneScores.totalMinecartHealth);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Dying
+            }
         }
     }
 
