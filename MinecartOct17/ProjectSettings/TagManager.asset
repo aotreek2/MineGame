@@ -15,6 +15,7 @@ TagManager:
   - ammoBox
   - bat
   - Minecart
+  - StrongZombie
   layers:
   - Default
   - TransparentFX

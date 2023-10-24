@@ -21,10 +21,16 @@ public class Zombie : MonoBehaviour
     public UnityEngine.UI.Slider zombieSlider;
     public PickaxeManager pickaxeManager;
 
+    public bool strongZombie = false;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if(strongZombie)
+        {
+            zombieHealth = 20;
+        }
     }
 
     // Update is called once per frame

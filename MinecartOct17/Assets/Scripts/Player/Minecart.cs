@@ -19,8 +19,6 @@ public class Minecart : MonoBehaviour
     public AudioSource crash;
     public AudioSource movement;
 
-
-
     //Caleb change -- added this bool for checking breaking.
     public bool isBreaking = false;
     public bool isJumping = false;
@@ -203,6 +201,26 @@ public class Minecart : MonoBehaviour
                 rb.AddForce(pushBackDirection * 10, ForceMode2D.Impulse);   // Knockback when the cart hits the zombie
             }
         }
+        else if (collision.gameObject.CompareTag("StrongZombie")) // Strong zombie
+        {
+            Zombie strongZombie = collision.gameObject.GetComponent<Zombie>();
+            TakeCartDamage(10);
+
+            if (strongZombie != null && rb.velocity.magnitude >= 5)
+            {
+                strongZombie.TakeDamage(10);
+                crash.Play();
+                Vector2 pushBackDirection = (transform.position - collision.transform.position).normalized;
+                rb.AddForce(pushBackDirection * 55, ForceMode2D.Impulse);
+            }
+            else
+            {
+                TakeHealthDamage(5);
+
+                Vector2 pushBackDirection = (transform.position - collision.transform.position).normalized;
+                rb.AddForce(pushBackDirection * 20, ForceMode2D.Impulse);   // Knockback when the cart hits the zombie
+            }
+        }
 
         if (collision.gameObject.CompareTag("Hazard") || collision.gameObject.CompareTag("rock")) // If player hits ROCK
         {
@@ -211,6 +229,16 @@ public class Minecart : MonoBehaviour
             transform.GetComponent<Animator>().Play("MinecartStopped");
 
             TakeCartDamage(10);
+        }
+        else if(collision.gameObject.CompareTag("ammoBox"))
+        {
+            crash.Play();
+            movement.Pause();
+            transform.GetComponent<Animator>().Play("MinecartStopped");
+
+            transform.GetChild(2).transform.GetChild(0).GetComponent<PlayerAimWeapon>().GainAmmo();
+
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.CompareTag("bat")) // If player hits BAT

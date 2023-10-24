@@ -117,7 +117,7 @@ public class PickaxeManager : MonoBehaviour
                 //Updates UI
                 UpdateOres();
             }
-            else if (minedObject.tag == "Zombie")
+            else if (minedObject.tag == "Zombie" || minedObject.tag == "StrongZombie")
             {
                 mining.pitch = Random.Range(1f, 1.8f);
                 mining.Play();

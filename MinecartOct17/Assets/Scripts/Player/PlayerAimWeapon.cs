@@ -145,6 +145,12 @@ public class PlayerAimWeapon : MonoBehaviour
         MultiSceneScores.ammo = magazineAmmo + reservedAmmo;
     }
 
+    public void GainAmmo()
+    {
+        reservedAmmo += UnityEngine.Random.Range(8, 24);
+        UpdateAmmo();
+    }
+
 
     public static Vector3 GetMousePosition()
     {
