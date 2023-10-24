@@ -10971,8 +10971,8 @@ MonoBehaviour:
   reloading: 0
   ammoUI: {fileID: 0}
   maxAmmo: 8
-  magazineAmmo: 8
-  reservedAmmo: 16
+  magazineAmmo: 0
+  reservedAmmo: 0
   reloadTime: 0
   gunFire: {fileID: 8305218393020324260}
   reload: {fileID: 572965739463236145}

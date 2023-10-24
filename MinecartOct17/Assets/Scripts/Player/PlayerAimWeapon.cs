@@ -44,6 +44,8 @@ public class PlayerAimWeapon : MonoBehaviour
         aimTransform = transform.Find("Aim").transform.GetChild(0);
         aimGunEndPointTransform = aimTransform.Find("GunEndPointPosition");
 
+        reservedAmmo = 0;
+        magazineAmmo = 0;
         reservedAmmo = MultiSceneScores.ammo;
         Reload();
         reloadTime = 0;

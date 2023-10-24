@@ -896,8 +896,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17.3, y: -261.2}
-  m_SizeDelta: {x: 755.7261, y: 185.6016}
+  m_AnchoredPosition: {x: -17.295, y: -227.98294}
+  m_SizeDelta: {x: 755.7261, y: 176.2757}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1404791221
 MonoBehaviour:
@@ -919,7 +919,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Credits:\nSong: \"The Cave Dweller\" by Dream-Protocal. \nhttps://pixabay.com/music/ambient-the-cave-dweller-dark-ambient-soundscape-108560/"
+  m_text: "Credits:\nSong: \"The Cave Dweller\" by Dream-Protocal. \nhttps://pixabay.com/music/ambient-the-cave-dweller-dark-ambient-soundscape-108560/\nFonts:
+    \"Pixel FJVerdana 12pt\" by MBommeli, \"DPComic\" by codeman38.\nhttps://www.1001fonts.com/pixel-fonts.html"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
